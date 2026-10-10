@@ -1,0 +1,16 @@
+.git
+.github
+.gradle
+build
+data
+.env*
+node_modules
+qa-output
+.idea
+.vscode
+docs
+scripts
+**/AGENTS.md
+**/agents.md
+src/main/resources/static/images/world/*
+!src/main/resources/static/images/world/hd-*.webp

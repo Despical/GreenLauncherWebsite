@@ -1,0 +1,126 @@
+/* Shared scroll controls and the Docs source-position image lightbox. */
+.back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 30;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #d1e8a331;
+    border-radius: 9px;
+    background: #b9e65d;
+    color: #17210d;
+    box-shadow: 0 8px 24px #0004;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition:
+        opacity 0.2s,
+        transform 0.2s,
+        visibility 0.2s,
+        background-color 0.2s;
+}
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+}
+.back-to-top svg {
+    width: 23px;
+    height: 23px;
+    transition: transform 0.2s;
+}
+.back-to-top:hover {
+    background: var(--accent-hover);
+}
+.back-to-top:hover svg {
+    transform: translateY(-2px);
+}
+[data-lightbox] {
+    cursor: zoom-in;
+}
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100dvw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    color: var(--text);
+}
+.image-lightbox::backdrop {
+    background: rgb(7 11 15 / 88%);
+}
+.image-lightbox-media {
+    position: fixed;
+    display: block;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    transform-origin: 0 0;
+    border-radius: 8px;
+    box-shadow: 0 16px 64px #0005;
+    cursor: zoom-out;
+}
+.image-lightbox-close {
+    position: fixed;
+    top: max(20px, env(safe-area-inset-top));
+    right: max(20px, env(safe-area-inset-right));
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ffffff30;
+    border-radius: 50%;
+    color: #f1f4ef;
+    background: #17221b;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+.image-lightbox-close:hover {
+    background: #2b362e;
+}
+.image-lightbox-close svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+.image-lightbox-caption {
+    position: fixed;
+    margin: 0;
+    color: #dce5da;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    pointer-events: none;
+}
+@media (max-width: 600px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .back-to-top,
+    .back-to-top svg,
+    .image-lightbox-close {
+        transition: none;
+    }
+}

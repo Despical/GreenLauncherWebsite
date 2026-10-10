@@ -1,0 +1,406 @@
+[
+  {
+    "tag_name": "v0.19.1",
+    "body": "Green Launcher 0.19.1 reduces repeated downloads for the installed edition by preserving the already compressed update payload inside the setup package.\n\n- Installer updates can reuse substantially more unchanged data after moving to the new package format.\n- Keep your existing installation. Accounts, profiles, worlds and settings are preserved.\n- The first update from an older installer format may still require a larger download. Later compatible updates reuse the unchanged blocks.\n- Portable updates retain their existing verified differential download behavior.\n\nThe built-in changelog is available in Turkish, English, German, French, Russian and Polish.\n\nUse GreenLauncher-Setup-0.19.1.exe for the installed edition or GreenLauncher-0.19.1.exe for the portable edition. Both update manifests, both block maps and checksums are included.\n",
+    "published_at": "2026-10-09T20:24:14Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.19.1",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.19.1.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/GreenLauncher-0.19.1.exe",
+        "size": 184910984,
+        "digest": "sha256:172f666e7d59c22c24f4edb2d10587b61c07fa20922e874ff08bb27cf9f0698f"
+      },
+      {
+        "name": "GreenLauncher-0.19.1.exe.blocks.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/GreenLauncher-0.19.1.exe.blocks.json",
+        "size": 1036556,
+        "digest": "sha256:37e9c3913a517562a350d0b51a24e6798513da8b6bafeea8c0d05623d159d329"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.19.1.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/GreenLauncher-Setup-0.19.1.exe",
+        "size": 320160863,
+        "digest": "sha256:f682038e40aa8d92a607c1acf88f95a5df733574512d153ebe4fd3dda045ccf9"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.19.1.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/GreenLauncher-Setup-0.19.1.exe.blockmap",
+        "size": 333353,
+        "digest": "sha256:4e98907dd84c1bb9e482686a6c629bf37a7efd3b1c481c40f62bf4e345db9f25"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/latest.yml",
+        "size": 358,
+        "digest": "sha256:540486314b4da30db854aa1bcc631f38eb0319e9ff6e549158348776bda6edd0"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/portable-update.json",
+        "size": 368,
+        "digest": "sha256:cc9255ce324cb0c543030525d8820605e58d93232b709b17db5e790202adda1f"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.1/SHA256SUMS.txt",
+        "size": 561,
+        "digest": "sha256:2507c510293181d40746baf4bfc9f3ddfddcc6af595ea57e45a08bb992ddbdf1"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.19.0",
+    "body": "Green Launcher 0.19.0 adds playtime analytics for all profiles or a single profile, along with screenshot renaming.\n\n- View total playtime, session counts, days played and average session length for the last 7, 30 or 90 days, or all recorded time.\n- Compare profiles and weekdays, explore playtime charts and inspect values in tooltips anchored above each bar.\n- Explore the last 365 days in the activity calendar, including days without play, and track your current playing streak.\n- Select a day in the chart or calendar to inspect its sessions. Sessions crossing midnight are split across days, and running games refresh roughly every 30 seconds.\n- Rename screenshots from the context menu. Extension changes require an extra confirmation inside the same dialog; existing files are protected and successful saves show a notification.\n- Improve analytics typography, chart labels, profile navigation and session filter placement, with stable tooltips while moving within a chart column.\n\nThe built-in changelog is available in Turkish, English, German, French, Russian and Polish.\n\nUse GreenLauncher-Setup-0.19.0.exe for an installed launcher with automatic updates, or GreenLauncher-0.19.0.exe for the portable edition. Both update feeds and their block maps are included in this release.\n",
+    "published_at": "2026-10-09T19:49:07Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.19.0",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.19.0.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/GreenLauncher-0.19.0.exe",
+        "size": 184908715,
+        "digest": "sha256:2c86a5c020a0964f73ef38653e5a82be13a189bfb95aab23f37c5f86ad30d0ed"
+      },
+      {
+        "name": "GreenLauncher-0.19.0.exe.blocks.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/GreenLauncher-0.19.0.exe.blocks.json",
+        "size": 1035663,
+        "digest": "sha256:251fb8e819d8fe879648ec6f430edc3adc3a1c9d3c0cc1b6edc2172f7924eee5"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.19.0.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/GreenLauncher-Setup-0.19.0.exe",
+        "size": 318196164,
+        "digest": "sha256:9f0211098fcbb16f3ffe23833d4a56fc25a8f65fb30a1d39488be6b358d770bc"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.19.0.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/GreenLauncher-Setup-0.19.0.exe.blockmap",
+        "size": 331683,
+        "digest": "sha256:a658b5fc66f6582480fc7706f0bde832b7522ef97a5f01b5c33080296fca7c41"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/latest.yml",
+        "size": 358,
+        "digest": "sha256:beeec5f827e6ef15ad5708da6a2799c81f4d38f00292b7b581267ddd3a17e9f5"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/portable-update.json",
+        "size": 368,
+        "digest": "sha256:408c68a4a7cb0b6c5f1d75aca648d144b8066f3e56e6663b05fdf00703ed3d78"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.19.0/SHA256SUMS.txt",
+        "size": 561,
+        "digest": "sha256:d97b3088255183cdf34c18ce4679a93b716556b57c563776db7355bad277995a"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.18.2",
+    "body": "Personalize the home page with custom backgrounds and a consistent saved order.\n\n- Add up to 12 custom PNG, JPG or WebP backgrounds and toggle default or custom images individually. At least one background remains enabled.\n- Reorder background cards with animated mouse or keyboard sorting. The saved order is shared by the home page and its background menu.\n- Keep home backgrounds static, with optional automatic switching between enabled images.\n- Refine the background settings separator, transition-card border, typography and standard green Add images button. The remove button appears beside Show on hover or keyboard focus.\n- Number enabled backgrounds consistently in the home selector and dropdown, without gaps left by disabled images.\n- Allow profile package drops throughout My Profiles and clear the activity status after successful or failed exports.\n- Update the built-in changelog in Turkish, English, German, French, Russian and Polish.\n\nUse **GreenLauncher-Setup-0.18.2.exe** for installation and updates, or **GreenLauncher-0.18.2.exe** for portable use. Updates remain explicit and are blocked while games, downloads or installations are active. Existing accounts, profiles and game files are preserved.\n",
+    "published_at": "2026-10-08T07:39:26Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.18.2",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.18.2.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/GreenLauncher-0.18.2.exe",
+        "size": 184868970,
+        "digest": "sha256:32383d62e6a5139eafe45a9d76c01ec1bf3046c91ed2108721a6755ba7217845"
+      },
+      {
+        "name": "GreenLauncher-0.18.2.exe.blocks.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/GreenLauncher-0.18.2.exe.blocks.json",
+        "size": 1038265,
+        "digest": "sha256:08cede59ebad5726d556e48d1bc039aaba9f9b00b964701377404863071e27a2"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.18.2.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/GreenLauncher-Setup-0.18.2.exe",
+        "size": 318135925,
+        "digest": "sha256:5cd6d962de8c653eab2bfc0fb6846c4d6e75fc3dcce66b365c14cc316cd5333e"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.18.2.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/GreenLauncher-Setup-0.18.2.exe.blockmap",
+        "size": 332929,
+        "digest": "sha256:0261fac2122e1d4414c1926fbc0f601ffc85de2246a5d467318b59a8ec859b71"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/latest.yml",
+        "size": 358,
+        "digest": "sha256:c72eff3bb100a09baf20055ccf013551af7c9a6664614adab9a40b519b28a8cb"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/portable-update.json",
+        "size": 368,
+        "digest": "sha256:46373ee30056e74ad81a966eb7c8f61a3176fd63408c6b3d2c43b2237237309b"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.2/SHA256SUMS.txt",
+        "size": 561,
+        "digest": "sha256:9a7898843a62d217cc5fe777210bf88d237943ac0acea2225c8b97d7980bdeae"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.18.1",
+    "body": "Profile selection is more compact, and game windows now start at a practical size.\n\n- Replaced large profile cards with compact tiles showing the configured icon and the profile name underneath.\n- Profile cards open management with one click. The options button appears on hover or keyboard focus; drag sorting remains available.\n- Removed profile pinning, the Edit Cover context-menu action, and RAM/window details from profile selection. The home selector and dropdown show profile icons and names.\n- Profile package drag-and-drop now uses a full application backdrop with dimming and soft blur.\n- Changed the default game window to a normal size and fitted older monitor-sized windows to the desktop, while preserving saved dimensions and the fullscreen launch preference.\n- Updated the built-in changelog in Turkish, English, German, French, Russian and Polish.\n\nUse **GreenLauncher-Setup-0.18.1.exe** for installation and updates, or **GreenLauncher-0.18.1.exe** for portable use. Updates remain explicit and are blocked while games, downloads or installations are active. Existing accounts, profiles and game files are preserved.\n",
+    "published_at": "2026-10-07T14:37:16Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.18.1",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.18.1.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/GreenLauncher-0.18.1.exe",
+        "size": 184857673,
+        "digest": "sha256:a56e0ef775a3f5525c64bd4adf8654bcedfa2f56b29366aaf82cc685c1172d8c"
+      },
+      {
+        "name": "GreenLauncher-0.18.1.exe.blocks.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/GreenLauncher-0.18.1.exe.blocks.json",
+        "size": 1034029,
+        "digest": "sha256:d9276f0a2a3634103be046e1eec5eca377d9a8b2b1ee24c1fe80b92b4e9a3270"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.18.1.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/GreenLauncher-Setup-0.18.1.exe",
+        "size": 318113076,
+        "digest": "sha256:a68402b41b71eb3d39a1192d88229af8fc201db7541759d5d9b7e25574021a08"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.18.1.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/GreenLauncher-Setup-0.18.1.exe.blockmap",
+        "size": 331751,
+        "digest": "sha256:795d9b386c4c7eb6666be4c577eb92696500e51533772298c20cc2e5ecf95e16"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/latest.yml",
+        "size": 358,
+        "digest": "sha256:741b534c9660c67b7b6bda7bbd63a6422d163862f6312eca707fa0ed301f3763"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/portable-update.json",
+        "size": 368,
+        "digest": "sha256:ff08f2bb36c55df0047c3701c26ec87ab05e5e22f4176f8277bcbf6225a7ffbd"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.1/SHA256SUMS.txt",
+        "size": 561,
+        "digest": "sha256:c3fb039a9383442956cf7e7e1ee3afa7fe49c3fdefd6379a6168c65f87956e9b"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.18.0",
+    "body": "Green Launcher 0.18.0 adds a dedicated profile workspace for managing Minecraft versions, loaders, launch preferences, icons, installed mods, resource packs and shaders.\n\n- Added live Minecraft console and archived system logs with search, copy and upload controls.\n- Added profile package management, version selection and modpack installation destinations.\n- Improved installed content metadata, caching, compatible updates and whole-card selection.\n- Increased spacing between server/world images and names while keeping column headings aligned.\n- Restored the red installed-version compatibility warning in the content details panel.\n- Refined empty console colors, disabled empty-log actions, copy feedback, refresh notifications, sidebar ordering and expandable version lists.\n- Made the saved fullscreen setting follow the profile launch preference while preserving other game settings.\n- Updated the built-in changelog in Turkish, English, German, French, Russian and Polish.\n\nUpdate from the launcher to keep your accounts, profiles, worlds and settings. The release includes verified setup and portable update payloads with differential metadata and checksums.\r\n",
+    "published_at": "2026-10-05T09:03:57Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.18.0",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.18.0.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/GreenLauncher-0.18.0.exe",
+        "size": 184855298,
+        "digest": "sha256:c26bce76dc6bff6b6bbdea97bfdd4f48feab798417ce495cbf5e53da917b67d3"
+      },
+      {
+        "name": "GreenLauncher-0.18.0.exe.blocks.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/GreenLauncher-0.18.0.exe.blocks.json",
+        "size": 1034025,
+        "digest": "sha256:34ab35adbcef16d03bc1c657bd207a20980cd1c57669e225861d15e19baa0c95"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.18.0.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/GreenLauncher-Setup-0.18.0.exe",
+        "size": 318109114,
+        "digest": "sha256:12a7168fac44f326577c50c8fe8c1e8e0153204d76e5522e4127febee3d3cbf6"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.18.0.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/GreenLauncher-Setup-0.18.0.exe.blockmap",
+        "size": 332537,
+        "digest": "sha256:5be648bdee5955c08a377f423acab7e57c2f2a676912f515417860d6940fff14"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/latest.yml",
+        "size": 358,
+        "digest": "sha256:d8ff2cad30c7b8e1eeeba75ef0a688ee0e69b197f8ec730298fb39005671228f"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/portable-update.json",
+        "size": 368,
+        "digest": "sha256:c7da922c0a68c49ea27b5855ca7597756f9a9d440025a1b2062466ccd0bf1cdf"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.18.0/SHA256SUMS.txt",
+        "size": 561,
+        "digest": "sha256:887a4656bd2d76b97cc3cf5770eca2aacd8511baad00a4dad67f347c194b2a8a"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.17.7",
+    "body": "Green Launcher 0.17.7 introduces verified differential portable updates, storage safeguards and fresher catalog data.\n\n### Updates and storage\n- Portable updates can reuse matching blocks from the existing launcher and download only changed blocks. The reconstructed EXE is verified against the release SHA-256 before installation; unsupported or invalid differential downloads fall back to a fully verified download.\n- Updating from 0.17.6 or earlier to 0.17.7 still requires one full download. Differential downloads become available from the 0.17.7 client for subsequent compatible releases. Download savings depend on what changes between builds.\n- Successful launches clean up completed, unused launcher runtimes and obsolete update downloads. The current runtime, running launcher instances, pending newer updates, profiles, accounts and Minecraft data remain protected.\n- Downloads check available storage before fetching content, including temporary update files and runtime extraction. Shared reservations account for concurrent downloads; insufficient space produces a notification and a log entry.\n\n### Interface and catalog fixes\n- Centered the last-played and size headings and values in the Worlds table, and aligned the four sidebar action buttons around a shared icon/text layout.\n- Modrinth favorites, catalog results and project details now share refreshed project metadata. Metadata is cached for about two minutes, refreshes in the background and remains available when offline.\n\n### Validation\nVerified builds and translations, storage reservations, download retries/resume, differential reconstruction and full-download fallback, cancellation, runtime cleanup, favorites refresh, Worlds alignment, packaged checksums and the native update handoff. A small-change comparison between two real portable builds reused most of the previous package; this is a test result, not a fixed download-size guarantee.\n",
+    "published_at": "2026-10-02T21:18:45Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.17.7",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.17.7.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/GreenLauncher-0.17.7.exe",
+        "size": 184754980,
+        "digest": "sha256:b6298991701472b269b3938678232fd823bcbf3355fc70f64ff6db10315b5828"
+      },
+      {
+        "name": "GreenLauncher-0.17.7.exe.blocks.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/GreenLauncher-0.17.7.exe.blocks.json",
+        "size": 1035928,
+        "digest": "sha256:1f8b5fe0bdd474fa240b78fd13082363b220c1dd64da9cc1a04cdc2bbac817f9"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.17.7.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/GreenLauncher-Setup-0.17.7.exe",
+        "size": 317932626,
+        "digest": "sha256:b53e5c316e39c57366c0a2595cf8893845ab9b07fdafebb44e355c13549e4c96"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.17.7.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/GreenLauncher-Setup-0.17.7.exe.blockmap",
+        "size": 332165,
+        "digest": "sha256:f69fc078f0ac4dd5ed93ab835ded54e6b533cfb62495136ed0e335cad53cf701"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/latest.yml",
+        "size": 358,
+        "digest": "sha256:640252ecb755ba02328e4d48a242c8eee34eef2692fc29d34fec8fb7954650d2"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/portable-update.json",
+        "size": 368,
+        "digest": "sha256:07a9575619d73e2f2a24f7e55807655fe05c7eab14b64c1a6442ff8d13937b17"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.7/SHA256SUMS.txt",
+        "size": 561,
+        "digest": "sha256:c08e198146459c8cbaaadaf4b528ab5ec2e96690dce63771331797961d5f1305"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.17.6",
+    "body": "Green Launcher 0.17.6 refines update tracking, world management and the compact About and changelog cards.\n\n### Updates and downloads\n- Completed launcher updates leave the queue and appear in Recent downloads. Successful installed updates are recorded once and stay removed when download history is cleared.\n- Update downloads use the same card layout as other downloads, with current and peak speed, estimated remaining time and a sharp launcher icon.\n- The update card is now at the bottom of About. Its compact night landscape fills the card while keeping the distant tower visible.\n- The changelog footer shows the installed version with an animated check action and a result notification. When a newer version is available, its versioned Update action starts the download and opens Downloads immediately.\n\n### Worlds and servers\n- World table and sidebar typography and colors match Servers. The game-mode column matches the Players column width; last-played and size columns have more room.\n- World game-mode values share the same color as the other table metadata.\n- The four world-management actions keep aligned icons with their labels closer beside them.\n- Server and world icons have a small left inset while retaining full row height, column separators and rounded final-row corners.\n\n### About and changelog\n- About uses a dedicated distant sunrise valley, framed for its existing short header.\n- The changelog header has a separate End-islands panorama fitted to its compact size.\n- Release notes remain in the changelog, with latest and installed-version badges.\n\n### Validation\n- Checked the interface in all six supported languages and at narrow and wide window sizes.\n- Verified update version ordering, download interruption and retry, checksum rejection, cancellation, cache reuse, atomic replacement and failed-launch rollback with isolated fixtures.\n- Verified portable and setup packages, public updater configuration, portable SHA-256 metadata, installer SHA-512 metadata and blockmap.\n\nExisting installations can update from the launcher. The versioned portable EXE is also available below; account and profile data stay separate from the executable.\n",
+    "published_at": "2026-10-02T20:10:14Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.17.6",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.17.6.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.6/GreenLauncher-0.17.6.exe",
+        "size": 118885497,
+        "digest": "sha256:8e035fde70f2c8c1a7dcd158e640aecc934330f182501e989626202d3c2a0c4d"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.17.6.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.6/GreenLauncher-Setup-0.17.6.exe",
+        "size": 252506166,
+        "digest": "sha256:0c371029afcf8e29466a2308abd894b5cb34c1e064a502498daf970f5fbc297b"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.17.6.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.6/GreenLauncher-Setup-0.17.6.exe.blockmap",
+        "size": 263456,
+        "digest": "sha256:296175944fc4eae3b7e1533138002d50668df12e832ce823f5d14ddae629bfe4"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.6/latest.yml",
+        "size": 358,
+        "digest": "sha256:9022b780cfdfeb8265cc16b814386b26119f684ad62d6c2a4bd4c1930d860620"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.6/portable-update.json",
+        "size": 165,
+        "digest": "sha256:55968cf11c9b559640a1ef255b6f4e919dda035037688f541af207033ca2eb5d"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.6/SHA256SUMS.txt",
+        "size": 458,
+        "digest": "sha256:a0cc9eeaad81fdef9a9b349cd13818c47c7e1c2b65e89117da1e21f3bfb92829"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.17.5",
+    "body": "Green Launcher 0.17.5 fixes portable updates that reopened an installer or kept the previous executable running.\n\n### Silent updates\n- Portable updates verify the downloaded executable, replace the launcher in place and restart automatically without a setup wizard.\n- A compatibility handoff lets the existing 0.17.4 portable launcher upgrade through its current update action. The new Downloads interface is available after this first upgrade.\n- If the new executable fails to open, the updater restores the previous file. Profile and account data remain separate from the executable.\n- Installed launchers apply updates silently. Updates remain explicit and are blocked while games or other installations are active.\n\n### Downloads\n- Update download progress, restart readiness and the last successful update appear on the Downloads page.\n- The blinking status-bar update link opens Downloads. Launcher settings also forward update actions to this page.\n- Interrupted downloads can be retried; checksum validation and the no-downgrade policy remain enforced.\n\n### Logs\n- Successful updates and update failures are recorded in the launcher log.\n- Identical errors share an occurrence count. First and last occurrence times appear in the expanded details.\n\n### Validation\n- Tested the unchanged 0.17.4 Electron update handoff against an isolated portable executable, including the real new launcher startup and success log.\n- Verified atomic replacement, corrupt-payload rejection, failed-launch rollback, cancellation, retries and update guards.\n- Checked Downloads, notifications and changelog navigation in all six supported languages.\n",
+    "published_at": "2026-10-02T16:11:53Z",
+    "html_url": "https://github.com/Despical/GreenLauncher/releases/tag/v0.17.5",
+    "draft": false,
+    "prerelease": false,
+    "assets": [
+      {
+        "name": "GreenLauncher-0.17.5.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.5/GreenLauncher-0.17.5.exe",
+        "size": 115397614,
+        "digest": "sha256:548f98ea038d1c488e8bb674bf44330935276d6e745f061c4d424c9576763852"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.17.5.exe",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.5/GreenLauncher-Setup-0.17.5.exe",
+        "size": 245564295,
+        "digest": "sha256:3ced2417370caa181393069be1a06e29a8ac85c7b1343844ee771a408a4162ed"
+      },
+      {
+        "name": "GreenLauncher-Setup-0.17.5.exe.blockmap",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.5/GreenLauncher-Setup-0.17.5.exe.blockmap",
+        "size": 256428,
+        "digest": "sha256:854ac7aabf7b738361939f7f690dc6e5d76a5b8cb2a1772d196272bfcdfd0169"
+      },
+      {
+        "name": "latest.yml",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.5/latest.yml",
+        "size": 358,
+        "digest": "sha256:843cea75bde00592f72f71f57098d7336d41244852ecd9d4f3773fb72de22760"
+      },
+      {
+        "name": "portable-update.json",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.5/portable-update.json",
+        "size": 165,
+        "digest": "sha256:feeec5ec568d2c75af44f362325cb4068a99e742923ed8452c6b8c528bb055db"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "browser_download_url": "https://github.com/Despical/GreenLauncher/releases/download/v0.17.5/SHA256SUMS.txt",
+        "size": 458,
+        "digest": "sha256:5498dfa5dd849f3d3992b367c995fe42dab06525f1d314798122a0cf28af4eda"
+      }
+    ]
+  }
+]

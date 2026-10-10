@@ -1,0 +1,13 @@
+{
+    "tabWidth": 4,
+    "printWidth": 120,
+    "htmlWhitespaceSensitivity": "css",
+    "overrides": [
+        {
+            "files": ["*.yml", "*.yaml"],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}

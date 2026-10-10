@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head th:replace="~{fragments :: head(${release.title()})}"></head>
+    <body>
+        <header th:replace="~{fragments :: publicHeader}"></header>
+        <main class="container page-main public-page release-detail">
+            <a href="/changelog" class="text-link back-link"
+                ><svg th:replace="~{fragments :: icon('back')}"></svg><span th:text="#{release.back}"></span
+            ></a>
+            <div class="release-detail-heading">
+                <div class="release-title-row">
+                    <h1 th:text="${release.title()}"></h1>
+                    <time th:text="${release.dateLabel()}"></time>
+                </div>
+                <p th:text="${release.summary()}"></p>
+            </div>
+            <div class="release-detail-layout">
+                <article class="release-notes" th:attr="data-notes=${release.notes()}">
+                    <pre th:text="${release.notes()}"></pre>
+                </article>
+                <aside class="release-download-box">
+                    <div class="package-heading"><h2 th:text="${'Green Launcher ' + release.version()}"></h2></div>
+                    <p th:text="#{release.download.copy}"></p>
+                    <a
+                        th:if="${release.setup() != null}"
+                        class="button button-primary button-full"
+                        th:href="${release.setup().downloadUrl()}"
+                        ><svg th:replace="~{fragments :: icon('download')}"></svg
+                        ><span th:text="#{download.setup.action}"></span
+                    ></a>
+                    <a
+                        th:if="${release.portable() != null}"
+                        class="button button-outline button-full"
+                        th:href="${release.portable().downloadUrl()}"
+                        ><svg th:replace="~{fragments :: icon('download')}"></svg
+                        ><span th:text="#{download.portable.action}"></span
+                    ></a>
+                    <section class="release-files" aria-labelledby="release-files-title">
+                        <h3 id="release-files-title" th:text="#{download.files}"></h3>
+                        <a th:each="asset : ${release.assets()}" th:href="${asset.downloadUrl()}"
+                            ><span th:text="${asset.name()}"></span
+                            ><svg th:replace="~{fragments :: icon('download')}"></svg
+                        ></a>
+                    </section>
+                    <a
+                        th:if="${release.sourceUrl() != null}"
+                        class="text-link"
+                        th:href="${release.sourceUrl()}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span th:text="#{release.github}"></span
+                        ><svg th:replace="~{fragments :: icon('external')}"></svg
+                    ></a>
+                </aside>
+            </div>
+        </main>
+        <footer th:replace="~{fragments :: publicFooter}"></footer>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

@@ -1,0 +1,799 @@
+/* Shared interface. Artwork is defined separately in world.css. */
+:root {
+    --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --bg: #10150f;
+    --panel: #151b17;
+    --panel-raised: #1e2620;
+    --text: #f1f4ef;
+    --muted: #a8b2aa;
+    --subtle: #829087;
+    --line: #ffffff17;
+    --accent: #b9e65d;
+    --accent-hover: #9fc64c;
+    --radius: 12px;
+}
+html {
+    scroll-padding-top: 88px;
+}
+body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-sans);
+    font-weight: 650;
+    letter-spacing: -0.035em;
+    overflow-wrap: break-word;
+}
+p {
+    line-height: 1.7;
+}
+button,
+input,
+textarea,
+select {
+    font-family: var(--font-sans);
+}
+.container {
+    width: min(1200px, calc(100% - 80px));
+}
+.icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.8;
+}
+a,
+button,
+summary {
+    outline-offset: 4px;
+}
+input:focus,
+textarea:focus {
+    outline-color: var(--accent);
+}
+.button {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 8px;
+    gap: 9px;
+    line-height: 1.35;
+    background: #202923;
+    border: 1px solid #ffffff1c;
+    color: var(--text);
+    box-shadow: none;
+    transition:
+        background-color 0.15s,
+        border-color 0.15s,
+        color 0.15s;
+}
+.button:hover {
+    background: #2b362e;
+    border-color: #ffffff30;
+}
+.button-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #17210d;
+}
+.button-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+.button-outline {
+    background: #111813d9;
+    border-color: #ffffff29;
+}
+.button-outline:hover {
+    background: #222d24;
+    border-color: #ffffff42;
+}
+.button-large {
+    min-height: 50px;
+    padding-inline: 22px;
+    font-size: 15px;
+}
+.button-large > .icon:last-child {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+}
+.button-small {
+    min-height: 38px;
+    padding-inline: 13px;
+    font-size: 13px;
+}
+.button-small .icon {
+    width: 16px;
+    height: 16px;
+}
+.text-link {
+    min-height: 32px;
+    font-size: 14px;
+    font-weight: 550;
+    gap: 8px;
+}
+.text-link {
+    transition: color 0.18s ease;
+}
+.text-link:hover {
+    color: #e0edce;
+}
+.text-link .icon {
+    transition: transform 0.2s ease;
+}
+.text-link:hover .icon:has(use[href$="#arrow"]),
+.text-link:focus-visible .icon:has(use[href$="#arrow"]) {
+    transform: translateX(3px);
+}
+.release-card:hover .text-link .icon:has(use[href$="#arrow"]) {
+    transform: translateX(3px);
+}
+.button-primary:active {
+    background: #92b743;
+    border-color: #92b743;
+}
+.launcher-icon {
+    stroke-width: 2;
+}
+.brand-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+.badge {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 550;
+    padding: 4px 7px;
+    border-radius: 5px;
+}
+.version-label,
+.brand,
+.feature-number,
+.admin-stats strong,
+.error-code {
+    font-family: var(--font-sans);
+}
+.version-label {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+}
+.public-header,
+.admin-header {
+    height: 72px;
+    background: #10150f;
+    border-bottom: 1px solid #ffffff13;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: none;
+}
+.public-header .container,
+.admin-header .container {
+    width: min(1200px, calc(100% - 80px));
+}
+.public-header .nav-row,
+.admin-header .nav-row {
+    gap: 24px;
+}
+.public-header .nav-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+}
+.public-header .brand,
+.admin-header .brand {
+    gap: 10px;
+    margin-right: auto;
+    letter-spacing: 0;
+    min-width: 170px;
+}
+.public-header .brand {
+    margin-right: 0;
+    min-width: 0;
+}
+.public-header .brand img,
+.admin-header .brand img {
+    width: 32px;
+    height: 32px;
+}
+.brand-wordmark {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    gap: 4px;
+    line-height: 1.2;
+}
+.brand-wordmark strong {
+    font: 650 16px/1.2 var(--font-sans);
+    letter-spacing: -0.025em;
+    color: #f1f4ef;
+}
+.brand-wordmark > span {
+    font: 400 16px/1.2 var(--font-sans);
+    letter-spacing: -0.025em;
+    color: #c5cdc5;
+}
+.public-header .main-nav {
+    margin: 0;
+    gap: 6px;
+    justify-self: center;
+}
+.public-header .main-nav > a {
+    min-height: 38px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 13px;
+    border-radius: 7px;
+    color: #aab5ab;
+    white-space: nowrap;
+}
+.public-header .main-nav > a.active {
+    color: #f1f4ef;
+    background: #ffffff0c;
+}
+.public-header .main-nav > a:hover {
+    color: #f1f4ef;
+    background: #ffffff12;
+}
+.public-header .main-nav > a.active:after {
+    display: none;
+}
+.public-header .main-nav .icon {
+    width: 13px;
+    height: 13px;
+}
+.public-header .nav-actions,
+.admin-header .nav-actions {
+    gap: 12px;
+}
+.admin-header .text-link {
+    min-height: 38px;
+    padding-inline: 9px;
+    font-size: 14px;
+}
+.admin-header .text-link .icon {
+    width: 16px;
+    height: 16px;
+}
+.public-header .nav-download {
+    min-height: 38px;
+    padding-inline: 14px;
+    font-size: 13px;
+    border-radius: 7px;
+}
+.public-header .language-menu summary {
+    min-height: 38px;
+    padding: 0 9px;
+    font-size: 12px;
+    font-weight: 500;
+    gap: 6px;
+    color: #c5cec5;
+    border-radius: 7px;
+    transition:
+        color 0.15s,
+        background-color 0.15s;
+}
+.public-header .language-menu summary:hover,
+.public-header .language-menu[open] summary {
+    color: #f1f4ef;
+    background: #ffffff12;
+}
+.public-header .language-menu summary > .icon {
+    width: 15px;
+    height: 15px;
+}
+.public-header .language-menu summary > .icon:last-child {
+    width: 11px;
+    height: 11px;
+}
+.public-header .language-options {
+    top: 44px;
+    background: #1b231d;
+    border-color: #ffffff24;
+    border-radius: 9px;
+    box-shadow: 0 8px 24px #0004;
+    padding: 6px;
+    min-width: 170px;
+}
+.public-header .language-options a {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 10px 12px;
+    border-radius: 5px;
+    color: #d1d9d0;
+}
+.public-header .language-options a:hover {
+    background: #ffffff0d;
+}
+.public-header .language-menu .language-options {
+    min-width: 218px;
+    margin: 0;
+    padding: 10px;
+    display: grid;
+    gap: 4px;
+    border-color: #ffffff1a;
+}
+.public-header .language-options button {
+    display: grid;
+    grid-template-columns: 22px 1fr 16px;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #d8e0d7;
+    font: 500 14px/1.4 var(--font-sans);
+    text-align: left;
+    cursor: pointer;
+    transition:
+        color 0.15s,
+        background-color 0.15s;
+}
+.public-header .language-options button:hover {
+    background: #ffffff0e;
+    color: #fff;
+}
+.public-header .language-options button.is-selected {
+    background: #ffffff09;
+    color: #d3ed9c;
+}
+.public-header .language-options button.is-selected:hover {
+    background: #ffffff14;
+}
+.public-header .language-options button:focus-visible {
+    outline-offset: -2px;
+}
+.language-flag {
+    display: block;
+    width: 22px;
+    height: 16px;
+    border-radius: 3px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px #ffffff1a;
+}
+.public-header .language-options .language-check {
+    width: 16px;
+    height: 16px;
+    visibility: hidden;
+}
+.public-header .language-options .is-selected .language-check {
+    visibility: visible;
+}
+.public-header .mobile-menu summary {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #ffffff1c;
+    border-radius: 7px;
+}
+.public-header .mobile-menu summary:hover {
+    background: #ffffff09;
+}
+.public-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #10150f;
+    border-top: 1px solid #ffffff18;
+}
+.public-footer .container {
+    width: min(1200px, calc(100% - 80px));
+}
+.public-footer .footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+    padding-block: 28px;
+}
+.public-footer .brand {
+    gap: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.public-footer .brand img {
+    width: 30px;
+    height: 30px;
+}
+.public-footer .footer-identity > p {
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #a8b4aa;
+}
+.public-footer .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, max-content));
+    align-items: start;
+    gap: 80px;
+    margin: 0;
+    font-size: 14px;
+    color: #c6d0c6;
+}
+.public-footer .footer-link-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+.public-footer .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 32px;
+}
+.public-footer .footer-links a:hover {
+    color: #f1f4ef;
+}
+.public-footer .footer-links .icon {
+    width: 20px;
+    height: 20px;
+}
+.public-footer .footer-links .github-icon {
+    fill: currentColor;
+    stroke: none;
+}
+.heading-separated {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 26px;
+}
+.public-page .page-heading.heading-separated {
+    max-width: none;
+}
+.public-footer .footer-links .footer-download {
+    min-height: 40px;
+    padding: 0 13px;
+    gap: 8px;
+    border: 1px solid #ffffff24;
+    border-radius: 7px;
+    color: #d6e8b4;
+    font-weight: 550;
+    background: #ffffff04;
+    transition:
+        background-color 0.15s,
+        border-color 0.15s;
+}
+.public-footer .footer-links .footer-download:hover {
+    background: #ffffff0d;
+    border-color: #ffffff38;
+}
+.public-footer .footer-links .footer-download .icon {
+    width: 16px;
+    height: 16px;
+}
+.public-footer .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-block: 16px;
+    border-top-color: #ffffff0e;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #a5b0a7;
+    gap: 8px 24px;
+}
+.public-footer .footer-bottom > span:nth-child(2) {
+    margin-left: 0;
+    max-width: none;
+}
+.page-heading h1 {
+    font-size: clamp(34px, 4.2vw, 52px);
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+}
+.page-heading p,
+.download-body > p,
+.option-card > p,
+.release-detail-heading > p {
+    font-size: 15px;
+}
+.download-title h2,
+.option-card h2 {
+    font-size: 23px;
+}
+.package-meta,
+.download-body .download-note,
+.option-update p,
+.asset-heading p,
+.faq-list details p {
+    font-size: 13px;
+}
+.asset-name strong,
+.asset-size,
+.faq-list summary {
+    font-size: 14px;
+}
+.checksum {
+    font-size: 11px;
+}
+.faq-section h2 {
+    font-size: 26px;
+}
+.changelog-toolbar > span,
+.search-field input,
+.timeline-date strong,
+.timeline-card p,
+.release-notes p,
+.release-notes li {
+    font-size: 14px;
+}
+.timeline-date > span:last-child,
+.timeline-actions .text-link,
+.archive-link,
+.release-detail-heading .release-meta {
+    font-size: 12px;
+}
+.timeline-card h2 {
+    font-size: 25px;
+    line-height: 1.3;
+}
+.release-notes h2 {
+    font-size: 27px;
+}
+.release-notes h3 {
+    font-size: 22px;
+}
+.release-download-box p,
+.back-link {
+    font-size: 13px;
+}
+/* Form surfaces inherit the same readable type and controls. */
+.form-stack {
+    gap: 20px;
+}
+.form-stack label {
+    font-size: 14px;
+    color: #c6d0c8;
+    gap: 8px;
+}
+.form-stack input,
+.form-stack textarea {
+    font-size: 14px;
+    min-height: 44px;
+    padding: 11px 13px;
+    background: #111813;
+    border-color: #ffffff20;
+    border-radius: 8px;
+}
+.form-stack label > small {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #91a096;
+}
+.password-toggle {
+    width: 38px;
+    right: 4px;
+    color: #a9b8ac;
+}
+.alert {
+    font-size: 13px;
+    border-radius: 8px;
+}
+.admin-heading h1 {
+    font-size: 38px;
+}
+.admin-heading p,
+.admin-release-row strong {
+    font-size: 14px;
+}
+.admin-release-row small,
+.admin-footnote,
+.editor-help p {
+    font-size: 12px;
+}
+.admin-stats span {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+}
+.editor-sidebar p {
+    font-size: 14px;
+}
+.editor-sidebar h2 {
+    font-size: 23px;
+}
+.login-brand {
+    gap: 10px;
+    letter-spacing: 0;
+}
+.login-brand img {
+    width: 32px;
+    height: 32px;
+}
+.login-form-inner h2 {
+    font-size: 30px;
+}
+.login-form-inner > p {
+    font-size: 14px;
+}
+.login-form-inner .eyebrow,
+.login-back {
+    font-size: 12px;
+}
+.login-art h1 {
+    font-size: clamp(38px, 4.5vw, 60px);
+}
+.login-art p {
+    font-size: 15px;
+}
+.login-art-footer {
+    font-size: 10px;
+}
+@media (max-width: 1050px) {
+    .container,
+    .public-header .container,
+    .admin-header .container,
+    .public-footer .container {
+        width: calc(100% - 48px);
+    }
+    .public-header .nav-row,
+    .admin-header .nav-row {
+        gap: 16px;
+    }
+    .public-header .main-nav > a {
+        padding-inline: 10px;
+    }
+    .public-header .nav-actions {
+        gap: 10px;
+    }
+}
+@media (max-width: 1000px) {
+    .public-header .nav-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .public-header .main-nav {
+        display: none;
+    }
+    .public-header .mobile-menu {
+        display: block;
+    }
+}
+@media (max-width: 800px) {
+    .public-header,
+    .admin-header {
+        height: 68px;
+    }
+    .public-header .brand,
+    .admin-header .brand {
+        min-width: 0;
+    }
+    .public-footer .footer-top {
+        align-items: flex-start;
+    }
+    .public-footer .footer-links {
+        grid-template-columns: repeat(2, minmax(125px, max-content));
+        gap: 48px;
+    }
+}
+@media (max-width: 600px) {
+    .container,
+    .public-header .container,
+    .admin-header .container,
+    .public-footer .container {
+        width: calc(100% - 32px);
+    }
+    .public-header,
+    .admin-header {
+        height: 64px;
+    }
+    .public-header .nav-row,
+    .admin-header .nav-row {
+        gap: 8px;
+    }
+    .public-header .brand,
+    .admin-header .brand,
+    .login-brand {
+        gap: 7px;
+    }
+    .public-header .brand img,
+    .admin-header .brand img,
+    .login-brand img {
+        width: 28px;
+        height: 28px;
+    }
+    .admin-header .nav-actions {
+        gap: 8px;
+    }
+    .admin-header .text-link {
+        width: 36px;
+        min-height: 36px;
+        padding: 0;
+        justify-content: center;
+        font-size: 0;
+        gap: 0;
+    }
+    .admin-header .button {
+        width: 36px;
+        min-height: 36px;
+        padding: 0;
+    }
+    .admin-header .button > span {
+        display: none;
+    }
+    .brand-wordmark strong,
+    .brand-wordmark > span {
+        font-size: 14px;
+    }
+    .public-header .nav-actions {
+        gap: 6px;
+    }
+    .public-header .nav-download {
+        width: 36px;
+        min-height: 36px;
+        padding: 0;
+    }
+    .public-header .nav-download span {
+        display: none;
+    }
+    .public-header .language-menu summary {
+        min-height: 36px;
+        padding: 0 6px;
+        font-size: 11px;
+        gap: 4px;
+    }
+    .public-header .language-menu summary > .icon:first-child {
+        display: none;
+    }
+    .public-header .mobile-menu summary {
+        width: 36px;
+        height: 36px;
+    }
+    .public-footer .footer-top {
+        flex-direction: column;
+        gap: 18px;
+        padding-block: 24px;
+    }
+    .public-footer .footer-links {
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: start;
+        gap: 32px;
+        font-size: 14px;
+    }
+    .public-footer .footer-bottom {
+        padding-block: 14px;
+        font-size: 13px;
+        gap: 7px;
+    }
+    .public-footer .footer-bottom > span {
+        width: 100%;
+    }
+    .public-footer .brand {
+        font-size: 15px;
+    }
+    .admin-heading h1 {
+        font-size: 30px;
+    }
+    .admin-stats span {
+        font-size: 10px;
+    }
+    .admin-release-row strong {
+        font-size: 13px;
+    }
+    .editor-sidebar p {
+        font-size: 13px;
+    }
+    .login-form-inner h2 {
+        font-size: 29px;
+    }
+}

@@ -1,0 +1,23 @@
+# Local state, credentials and generated files
+.gradle/
+build/
+data/
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.iml
+node_modules/
+qa-output/
+*.log
+.DS_Store
+Thumbs.db
+# Local authoring, screenshots and QA helpers are not runtime dependencies.
+/docs/
+/scripts/
+**/AGENTS.md
+**/agents.md
+# Only optimized artwork is required by the application.
+/src/main/resources/static/images/world/*
+!/src/main/resources/static/images/world/hd-*.webp

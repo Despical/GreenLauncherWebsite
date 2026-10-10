@@ -1,0 +1,70 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head th:replace="~{fragments :: head(#{nav.changelog})}"></head>
+    <body>
+        <header th:replace="~{fragments :: publicHeader}"></header>
+        <main class="container page-main public-page changelog-page">
+            <div class="page-heading changelog-heading heading-separated">
+                <div>
+                    <h1>
+                        <span th:text="#{changelog.line1}">Yeni sürümler.</span>
+                        <span th:text="#{changelog.line2}">Daha iyi bir deneyim.</span>
+                    </h1>
+                    <p th:text="#{changelog.copy}">
+                        Neler ekledik, neleri iyileştirdik? Green Launcher'ın yolculuğu burada.
+                    </p>
+                </div>
+            </div>
+            <div class="changelog-toolbar">
+                <label class="search-field"
+                    ><svg th:replace="~{fragments :: icon('search')}"></svg
+                    ><input
+                        id="release-search"
+                        type="search"
+                        th:placeholder="#{changelog.search}"
+                        th:aria-label="#{changelog.search}"
+                /></label>
+            </div>
+            <div class="timeline">
+                <article
+                    th:each="release,state : ${releases}"
+                    class="timeline-entry"
+                    th:attr="data-search=${'v' + release.version() + ' ' + release.title() + ' ' + release.summary()}"
+                >
+                    <div class="timeline-date">
+                        <span class="timeline-dot"></span><strong th:text="${release.dateLabel()}"></strong
+                        ><span th:text="#{release.stable}"></span>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-card-heading">
+                            <h2>
+                                <a
+                                    th:href="@{/changelog/{v}(v=${release.version()})}"
+                                    th:text="${'v' + release.version()}"
+                                ></a>
+                            </h2>
+                            <span class="badge" th:if="${state.first}" th:text="#{release.latest}"></span>
+                        </div>
+                        <p th:text="${release.summary()}"></p>
+                        <div class="timeline-actions">
+                            <a class="text-link" th:href="@{/changelog/{v}(v=${release.version()})}"
+                                ><span th:text="#{release.read}"></span
+                                ><svg th:replace="~{fragments :: icon('arrow')}"></svg></a
+                            ><a
+                                th:if="${release.setup() != null}"
+                                class="text-link quiet-link"
+                                th:href="${release.setup().downloadUrl()}"
+                                ><svg th:replace="~{fragments :: icon('download')}"></svg
+                                ><span th:text="#{download.setup.action}"></span
+                            ></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p id="search-empty" hidden class="empty-state" th:text="#{changelog.noResults}"></p>
+            <p th:if="${#lists.isEmpty(releases)}" class="empty-state" th:text="#{releases.empty}"></p>
+        </main>
+        <footer th:replace="~{fragments :: publicFooter}"></footer>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

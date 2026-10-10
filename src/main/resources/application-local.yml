@@ -1,0 +1,7 @@
+app:
+  local-admin: true
+server:
+  address: 127.0.0.1
+spring:
+  thymeleaf:
+    cache: false

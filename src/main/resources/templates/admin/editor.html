@@ -1,0 +1,198 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="tr">
+    <head th:replace="~{fragments :: head('Sürüm düzenle')}"></head>
+    <body>
+        <header th:replace="~{fragments :: adminHeader}"></header>
+        <main class="container admin-main" th:with="editing=${release != null}">
+            <a href="/admin" class="text-link back-link"
+                ><svg th:replace="~{fragments :: icon('back')}"></svg>Tüm sürümler</a
+            >
+            <div class="admin-heading">
+                <div>
+                    <div class="eyebrow section-index">SÜRÜM EDİTÖRÜ</div>
+                    <h1 th:text="${editing ? 'v' + release.version() : 'Yeni bir başlangıç.'}"></h1>
+                    <p>Sürüm notlarını yaz, dosyalarını ekle, hazır olduğunda yayınla.</p>
+                </div>
+                <span
+                    th:if="${editing}"
+                    th:class="${release.published() ? 'badge' : 'badge badge-draft'}"
+                    th:text="${release.published() ? 'Yayında' : 'Taslak'}"
+                ></span>
+            </div>
+            <div th:replace="~{fragments :: flash}"></div>
+            <div class="editor-layout">
+                <div>
+                    <form th:action="@{/admin/releases/save}" method="post" class="editor-card form-stack">
+                        <input type="hidden" name="id" th:value="${editing ? release.id() : ''}" />
+                        <div class="form-two-columns">
+                            <label
+                                >Sürüm numarası<input
+                                    name="version"
+                                    placeholder="0.18.0"
+                                    maxlength="20"
+                                    required
+                                    th:readonly="${editing}"
+                                    th:value="${form != null ? form['version'] : editing ? release.version() : ''}"
+                                /><small>Major.minor.patch biçiminde. Kaydettikten sonra değiştirilemez.</small></label
+                            ><label
+                                >Başlık<input
+                                    name="title"
+                                    placeholder="Green Launcher 0.18.0"
+                                    maxlength="160"
+                                    required
+                                    th:value="${form != null ? form['title'] : editing ? release.title() : ''}"
+                            /></label>
+                        </div>
+                        <label
+                            >Kısa özet<textarea
+                                name="summary"
+                                rows="3"
+                                maxlength="800"
+                                required
+                                placeholder="Bu sürümde öne çıkan yenilikleri birkaç cümleyle anlat."
+                                th:text="${form != null ? form['summary'] : editing ? release.summary() : ''}"
+                            ></textarea
+                            ><small>Ana sayfa ve sürüm listesindeki kartlarda görünür.</small></label
+                        ><label
+                            >Sürüm notları<textarea
+                                class="notes-editor"
+                                name="notes"
+                                rows="16"
+                                maxlength="40000"
+                                required
+                                placeholder="## Yenilikler&#10;- Yeni özellik&#10;&#10;## İyileştirmeler&#10;- Düzeltilen davranış"
+                                th:text="${form != null ? form['notes'] : editing ? release.notes() : ''}"
+                            ></textarea
+                            ><small>Başlıklar için ##, liste için - kullan. HTML çalıştırılmaz.</small></label
+                        ><button class="button button-primary" type="submit">
+                            <svg th:replace="~{fragments :: icon('save')}"></svg>Değişiklikleri kaydet
+                        </button>
+                    </form>
+                    <section th:if="${editing}" class="editor-card editor-files">
+                        <div class="asset-heading">
+                            <div>
+                                <h2>Sürüm dosyaları</h2>
+                                <p>Dosyalar sürüme özel, üzerine yazılamaz ve doğrulama değerleriyle saklanır.</p>
+                            </div>
+                            <span class="count" th:text="${#lists.size(release.assets())}"></span>
+                        </div>
+                        <form
+                            th:if="${!release.published()}"
+                            th:action="@{/admin/releases/{id}/upload(id=${release.id()})}"
+                            method="post"
+                            enctype="multipart/form-data"
+                            class="upload-form"
+                        >
+                            <label class="upload-zone"
+                                ><svg th:replace="~{fragments :: icon('upload')}"></svg
+                                ><strong>Bir sürüm dosyası seç</strong
+                                ><span>EXE, setup blockmap ve portable blocks.json · En fazla 1 GB</span
+                                ><input type="file" name="file" required accept=".exe,.blockmap,.json" /><small
+                                    class="upload-selected"
+                                    >Dosya seçilmedi.</small
+                                ></label
+                            >
+                            <p class="filename-hint">
+                                Setup: <code th:text="${'GreenLauncher-Setup-' + release.version() + '.exe'}"></code
+                                ><br />Portable:
+                                <code th:text="${'GreenLauncher-' + release.version() + '.exe'}"></code>
+                            </p>
+                            <button type="submit" class="button button-outline">
+                                <svg th:replace="~{fragments :: icon('upload')}"></svg>Dosyayı yükle
+                            </button>
+                            <p class="upload-progress" hidden>Yükleniyor ve doğrulama değerleri hesaplanıyor…</p>
+                        </form>
+                        <p th:if="${release.published()}" class="admin-footnote">
+                            Yayınlanan dosyalar korunur. Dosya eklemek veya silmek için sürümü önce taslağa al.
+                        </p>
+                        <div class="editor-asset-row" th:each="asset : ${release.assets()}">
+                            <svg th:replace="~{fragments :: icon('file')}"></svg>
+                            <div>
+                                <strong th:text="${asset.name()}"></strong
+                                ><small
+                                    th:text="${asset.sizeLabel() + (asset.isLocal() ? ' · Site depolaması' : ' · GitHub')}"
+                                ></small
+                                ><small
+                                    class="checksum"
+                                    th:if="${asset.sha256() != null}"
+                                    th:text="${asset.sha256()}"
+                                ></small>
+                            </div>
+                            <form
+                                th:if="${asset.isLocal() && !release.published()}"
+                                th:action="@{/admin/assets/{id}/delete(id=${asset.id()})}"
+                                method="post"
+                                data-confirm="Dosyayı kalıcı olarak silmek istiyor musun?"
+                            >
+                                <button type="submit" class="icon-button danger" aria-label="Dosyayı sil">
+                                    <svg th:replace="~{fragments :: icon('trash')}"></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <aside class="editor-sidebar">
+                    <section class="editor-card">
+                        <div class="option-icon"><svg th:replace="~{fragments :: icon('globe')}"></svg></div>
+                        <h2>Hazır olduğunda paylaş.</h2>
+                        <p>Taslakları yalnızca sen görürsün. Yayınladığında notlar ve dosyalar herkese açılır.</p>
+                        <div th:unless="${editing}" class="alert">
+                            Önce sürümü kaydet. Ardından dosya yükleyip yayınlayabilirsin.
+                        </div>
+                        <div th:if="${editing}">
+                            <form
+                                th:unless="${release.published()}"
+                                th:action="@{/admin/releases/{id}/publish(id=${release.id()})}"
+                                method="post"
+                            >
+                                <button type="submit" class="button button-primary button-full">
+                                    Sürümü yayınla<svg th:replace="~{fragments :: icon('arrow')}"></svg>
+                                </button>
+                            </form>
+                            <div th:if="${release.published()}">
+                                <a
+                                    class="button button-outline button-full"
+                                    th:href="@{/changelog/{v}(v=${release.version()})}"
+                                    >Yayını görüntüle<svg th:replace="~{fragments :: icon('external')}"></svg
+                                ></a>
+                                <form
+                                    th:action="@{/admin/releases/{id}/unpublish(id=${release.id()})}"
+                                    method="post"
+                                    data-confirm="Sürüm ve dosyaları ziyaretçilere kapanacak. Taslağa almak istiyor musun?"
+                                >
+                                    <button type="submit" class="button button-outline button-full">Taslağa al</button>
+                                </form>
+                            </div>
+                            <p class="admin-footnote">
+                                Setup, portable ve setup blockmap dosyaları gerekli. latest.yml, portable-update.json ve
+                                SHA256SUMS.txt yayın sırasında otomatik oluşturulur.
+                            </p>
+                            <form
+                                th:if="${!release.published()}"
+                                th:action="@{/admin/releases/{id}/delete(id=${release.id()})}"
+                                method="post"
+                                data-confirm="Bu taslak ve yerel dosyaları kalıcı olarak silinecek. Devam edilsin mi?"
+                            >
+                                <button type="submit" class="text-link danger">
+                                    <svg th:replace="~{fragments :: icon('trash')}"></svg>Taslağı sil
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+                    <section class="editor-help">
+                        <h3>Bir sonraki sürüm için</h3>
+                        <p>
+                            Önce oyuncuya neyin değiştiğini anlat. Yeni özellikleri, iyileştirmeleri ve düzeltmeleri
+                            ayrı başlıklarda topla.
+                        </p>
+                        <p>
+                            Sürüm sıralaması numaraya göre yapılır. Eski bir sürümü yeniden yayınlamak güncelleme
+                            akışını geriye götürmez.
+                        </p>
+                    </section>
+                </aside>
+            </div>
+        </main>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

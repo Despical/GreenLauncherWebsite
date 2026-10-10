@@ -1,0 +1,9 @@
+server:
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        secure: true
+app:
+  public-url: ${SITE_PUBLIC_URL:https://launcher.despical.dev}
+  local-admin: false

@@ -1,0 +1,8 @@
+build/
+data/
+docs/
+scripts/
+.gradle/
+src/main/resources/static/images/
+README.md
+LICENSE

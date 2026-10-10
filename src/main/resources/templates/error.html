@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head th:replace="~{fragments :: head(#{error.title})}"></head>
+    <body>
+        <header th:replace="~{fragments :: publicHeader}"></header>
+        <main class="container page-main public-page public-error">
+            <div class="error-content">
+                <div class="error-code" th:text="${status}">404</div>
+                <h1 th:text="#{error.title}"></h1>
+                <p th:text="#{error.copy}"></p>
+                <a class="button button-primary" href="/"
+                    ><svg th:replace="~{fragments :: icon('back')}"></svg><span th:text="#{nav.home}"></span
+                ></a>
+            </div>
+        </main>
+        <footer th:replace="~{fragments :: publicFooter}"></footer>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

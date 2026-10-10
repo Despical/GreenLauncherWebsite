@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="tr">
+    <head th:replace="~{fragments :: head('Yönetim')}"></head>
+    <body>
+        <header th:replace="~{fragments :: adminHeader}"></header>
+        <main class="container admin-main">
+            <div class="admin-heading heading-separated">
+                <div>
+                    <h1>Sürüm merkezi.</h1>
+                    <p>Bir sonraki güncellemeyi hazırla. Oyuncularla paylaş.</p>
+                </div>
+                <a href="/admin/releases/new" class="button button-primary"
+                    ><svg th:replace="~{fragments :: icon('plus')}"></svg>Yeni sürüm</a
+                >
+            </div>
+            <div th:replace="~{fragments :: flash}"></div>
+            <div class="admin-stats">
+                <div><span>YAYINLANAN SÜRÜM</span><strong th:text="${publishedCount}"></strong></div>
+                <div><span>TASLAK</span><strong th:text="${#lists.size(releases) - publishedCount}"></strong></div>
+                <div>
+                    <span>SON KARARLI SÜRÜM</span
+                    ><strong th:text="${#lists.isEmpty(releases) ? '—' : releases[0].version()}"></strong>
+                </div>
+            </div>
+            <div class="admin-list-heading">
+                <h2>Tüm sürümler</h2>
+                <form th:action="@{/admin/sync}" method="post">
+                    <button class="button button-outline button-small" type="submit">
+                        <svg th:replace="~{fragments :: icon('refresh')}"></svg>GitHub'dan içe aktar
+                    </button>
+                </form>
+            </div>
+            <div class="admin-releases">
+                <a
+                    th:each="release : ${releases}"
+                    th:href="@{/admin/releases/{id}(id=${release.id()})}"
+                    class="admin-release-row"
+                    ><span class="admin-release-icon"><svg th:replace="~{fragments :: icon('cube')}"></svg></span>
+                    <div>
+                        <strong th:text="${release.title()}"></strong
+                        ><small
+                            ><span th:text="${release.dateLabel()}"></span> ·
+                            <span th:text="${#lists.size(release.assets()) + ' dosya'}"></span
+                        ></small>
+                    </div>
+                    <span
+                        th:class="${release.published() ? 'badge' : 'badge badge-draft'}"
+                        th:text="${release.published() ? 'Yayında' : 'Taslak'}"
+                    ></span
+                    ><svg th:replace="~{fragments :: icon('arrow')}"></svg
+                ></a>
+                <p th:if="${#lists.isEmpty(releases)}" class="empty-state">İlk sürümünü oluşturarak başla.</p>
+            </div>
+            <p class="admin-footnote">
+                GitHub içe aktarımı yalnızca yeni kararlı sürümleri ekler. Düzenlediğin notlara ve taslaklara dokunmaz.
+            </p>
+        </main>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

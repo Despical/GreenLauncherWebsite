@@ -1,0 +1,223 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head th:replace="~{fragments :: head(#{nav.features})}"></head>
+    <body class="features-page">
+        <a class="skip-link" href="#main" th:text="#{a11y.skip}"></a>
+        <header th:replace="~{fragments :: publicHeader}"></header>
+        <main id="main" class="container page-main public-page">
+            <section class="features-hero" aria-labelledby="features-title">
+                <div class="features-hero-copy">
+                    <h1 id="features-title" th:text="#{features.title}"></h1>
+                    <p th:text="#{hero.copy}"></p>
+                    <div class="features-actions">
+                        <a class="button button-primary" href="/download"
+                            ><img
+                                class="brand-icon"
+                                src="/images/brands/windows.svg"
+                                width="20"
+                                height="20"
+                                alt="" /><span th:text="#{hero.download}"></span></a
+                        ><a class="text-link" href="/faq"
+                            ><span th:text="#{nav.faq}"></span><svg th:replace="~{fragments :: icon('arrow')}"></svg
+                        ></a>
+                    </div>
+                </div>
+                <figure class="features-screenshot">
+                    <a href="/images/launcher-home.png" data-lightbox th:aria-label="#{home.screenshot.open}"
+                        ><img
+                            src="/images/launcher-home.png"
+                            width="1737"
+                            height="1080"
+                            th:alt="#{home.screenshot.alt}"
+                    /></a>
+                    <figcaption><span th:text="#{home.screenshot.caption}"></span><span>v0.19.1</span></figcaption>
+                </figure>
+            </section>
+            <section class="features-overview" aria-labelledby="features-overview-title">
+                <div class="features-section-heading">
+                    <h2 id="features-overview-title" th:text="#{home.tools.title}"></h2>
+                    <p th:text="#{home.tools.copy}"></p>
+                </div>
+                <div class="feature-showcases">
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{feature.profiles}"></h3>
+                            <p th:text="#{feature.profiles.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a
+                                href="/images/launcher-profiles.png"
+                                data-lightbox
+                                th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-profiles.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.profiles}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{home.tools.mods}"></h3>
+                            <p th:text="#{home.tools.mods.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a href="/images/launcher-mods.png" data-lightbox th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-mods.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.mods}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{features.screen.versions}"></h3>
+                            <p th:text="#{features.screen.versions.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a
+                                href="/images/launcher-versions.png"
+                                data-lightbox
+                                th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-versions.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.versions}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{home.tools.memories}"></h3>
+                            <p th:text="#{features.screen.analytics.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a
+                                href="/images/launcher-analytics.png"
+                                data-lightbox
+                                th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-analytics.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.analytics}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{home.tools.java}"></h3>
+                            <p th:text="#{home.tools.java.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a href="/images/launcher-java.png" data-lightbox th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-java.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.java}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{home.tools.servers}"></h3>
+                            <p th:text="#{home.tools.servers.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a href="/images/launcher-servers.png" data-lightbox th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-servers.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.servers}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{home.tools.worlds}"></h3>
+                            <p th:text="#{home.tools.worlds.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a href="/images/launcher-worlds.png" data-lightbox th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-worlds.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.worlds}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{home.tools.share}"></h3>
+                            <p th:text="#{home.tools.share.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a href="/images/launcher-share.png" data-lightbox th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-share.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.share}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                    <article class="feature-showcase">
+                        <div class="feature-showcase-copy">
+                            <h3 th:text="#{features.settings}"></h3>
+                            <p th:text="#{features.settings.copy}"></p>
+                        </div>
+                        <figure class="features-screen">
+                            <a
+                                href="/images/launcher-settings.png"
+                                data-lightbox
+                                th:aria-label="#{home.screenshot.open}"
+                                ><img
+                                    src="/images/launcher-settings.png"
+                                    width="1380"
+                                    height="860"
+                                    th:alt="#{features.screen.settings}"
+                                    loading="lazy"
+                                    decoding="async"
+                            /></a>
+                        </figure>
+                    </article>
+                </div>
+            </section>
+            <section class="features-compatibility" th:aria-label="#{home.compatibility}">
+                <ul class="platform-list">
+                    <li><img src="/images/brands/fabric.png" width="24" height="24" alt="" />Fabric</li>
+                    <li><img src="/images/brands/forge.svg" width="24" height="24" alt="" />Forge</li>
+                    <li><img src="/images/brands/neoforge.svg" width="24" height="24" alt="" />NeoForge</li>
+                    <li><img src="/images/brands/optifine-mark.png" width="24" height="24" alt="" />OptiFine</li>
+                    <li><img src="/images/brands/modrinth-logo.svg" width="24" height="24" alt="" />Modrinth</li>
+                    <li><img src="/images/brands/technic.png" width="24" height="24" alt="" />Technic</li>
+                </ul>
+            </section>
+        </main>
+        <footer th:replace="~{fragments :: publicFooter}"></footer>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

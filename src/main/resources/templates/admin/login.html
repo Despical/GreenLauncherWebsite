@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="tr">
+    <head th:replace="~{fragments :: head('Yönetici girişi')}"></head>
+    <body class="login-page">
+        <a class="brand login-brand" href="/" aria-label="Green Launcher">
+            <img src="/images/logo.png" alt="" width="32" height="32" />
+            <span class="brand-wordmark"><strong>Green</strong><span>Launcher</span></span>
+        </a>
+        <main class="login-layout">
+            <div class="login-art">
+                <div class="login-art-content">
+                    <h1>Bir sonraki<br />sürüm burada<br /><span>başlıyor.</span></h1>
+                    <p>Yeni fikirler. Küçük iyileştirmeler.<br />Oyunculara ulaşacak bir sonraki adım.</p>
+                </div>
+            </div>
+            <div class="login-form-area">
+                <div class="login-form-inner">
+                    <h2>Tekrar hoş geldin.</h2>
+                    <p>Sürümleri, dosyaları ve notları yönetmek için giriş yap.</p>
+                    <div th:if="${param.error}" class="alert alert-error" role="alert">
+                        Kullanıcı adı veya parola yanlış.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">Güvenli şekilde çıkış yaptın.</div>
+                    <form th:action="@{/admin/login}" method="post" class="form-stack">
+                        <label
+                            >Kullanıcı adı<input
+                                name="username"
+                                autocomplete="username"
+                                required
+                                autofocus
+                                placeholder="admin"
+                        /></label>
+                        <label
+                            >Parola<span class="password-field"
+                                ><input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    autocomplete="current-password"
+                                    required
+                                    placeholder="Parolanı gir" /><button
+                                    type="button"
+                                    class="password-toggle"
+                                    aria-label="Parolayı göster"
+                                    aria-pressed="false"
+                                >
+                                    <svg th:replace="~{fragments :: icon('eye')}"></svg></button></span
+                        ></label>
+                        <button class="button button-primary button-full" type="submit">
+                            Giriş yap<svg th:replace="~{fragments :: icon('arrow')}"></svg>
+                        </button>
+                    </form>
+                    <a href="/" class="text-link login-back"
+                        ><svg th:replace="~{fragments :: icon('back')}"></svg>Siteye geri dön</a
+                    >
+                </div>
+            </div>
+        </main>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head th:replace="~{fragments :: head(#{nav.download})}"></head>
+    <body>
+        <header th:replace="~{fragments :: publicHeader}"></header>
+        <main class="container page-main public-page download-page">
+            <div class="page-heading">
+                <div class="eyebrow section-index" th:text="#{download.label}">OYUNA AÇILAN KAPI</div>
+                <h1>
+                    <span th:text="#{download.line1}">Macera burada</span>
+                    <span class="muted-heading" th:text="#{download.line2}">başlıyor.</span>
+                </h1>
+                <p th:text="#{download.copy}">Sana uygun paketi seç. Dünyaların için yer aç.</p>
+            </div>
+            <div th:if="${latest}" class="downloads-layout">
+                <section class="download-primary">
+                    <div class="package-heading">
+                        <img src="/images/logo.png" alt="" width="42" height="42" />
+                        <div class="download-title">
+                            <h2 th:text="#{download.setup}">Windows kurulumu</h2>
+                            <span class="badge" th:text="#{download.recommended}">Önerilen</span>
+                        </div>
+                    </div>
+                    <div class="download-body">
+                        <p th:text="#{download.setup.copy}">
+                            Başlat menüsüne ekle, kolayca başlat ve güncellemeleri launcher içinden yükle.
+                        </p>
+                        <div class="package-meta">
+                            <span th:text="${'v' + latest.version()}"></span><span>Windows 10 / 11 · x64</span
+                            ><span th:if="${latest.setup() != null}" th:text="${latest.setup().sizeLabel()}"></span>
+                        </div>
+                        <a
+                            th:if="${latest.setup() != null}"
+                            class="button button-primary button-full"
+                            th:href="${latest.setup().downloadUrl()}"
+                            ><svg th:replace="~{fragments :: icon('download')}"></svg
+                            ><span th:text="#{download.setup.action}">Setup'ı indir</span></a
+                        >
+                    </div>
+                </section>
+                <section class="option-card portable-card">
+                    <div class="package-heading">
+                        <div class="option-icon"><svg th:replace="~{fragments :: icon('folder')}"></svg></div>
+                        <h2 th:text="#{download.portable}">Al ve çalıştır.</h2>
+                    </div>
+                    <p th:text="#{download.portable.copy}">
+                        Kurulum adımı olmadan başlat. Portable sürüm, tek bir EXE dosyasında.
+                    </p>
+                    <div class="package-meta">
+                        <span>Portable · x64</span
+                        ><span th:if="${latest.portable() != null}" th:text="${latest.portable().sizeLabel()}"></span>
+                    </div>
+                    <a
+                        th:if="${latest.portable() != null}"
+                        class="button button-outline button-full"
+                        th:href="${latest.portable().downloadUrl()}"
+                        ><svg th:replace="~{fragments :: icon('download')}"></svg
+                        ><span th:text="#{download.portable.action}">Portable indir</span></a
+                    >
+                </section>
+            </div>
+            <p th:if="${latest}" class="download-note" th:text="#{download.account}">
+                Oynamak için Minecraft Java Edition hesabı gerekir.
+            </p>
+            <section th:if="${latest}" class="download-update-row">
+                <svg th:replace="~{fragments :: icon('refresh')}"></svg>
+                <div>
+                    <h3 th:text="#{download.installed}">Zaten kullanıyor musun?</h3>
+                    <p th:text="#{download.installed.copy}">
+                        Launcher'daki İndirilenler sayfasından güncelle. Kurulum ve profillerin olduğu gibi devam eder.
+                    </p>
+                </div>
+                <a class="text-link" th:href="@{/changelog/{v}(v=${latest.version()})}"
+                    ><span th:text="#{release.read}">Neler değişti?</span
+                    ><svg th:replace="~{fragments :: icon('arrow')}"></svg
+                ></a>
+            </section>
+            <section th:if="${latest}" class="asset-section">
+                <div class="asset-heading">
+                    <div>
+                        <h2 th:text="#{download.files}">Bu sürümün tüm dosyaları</h2>
+                        <p th:text="#{download.files.copy}">Setup, portable ve güncelleme dosyaları. Tek bir yerde.</p>
+                    </div>
+                    <span class="version-label" th:text="${'v' + latest.version()}"></span>
+                </div>
+                <div class="asset-table">
+                    <div class="asset-row" th:each="asset : ${latest.assets()}">
+                        <svg th:replace="~{fragments :: icon('file')}"></svg>
+                        <div class="asset-name">
+                            <strong th:text="${asset.name()}"></strong
+                            ><small
+                                th:if="${asset.sha256() != null}"
+                                th:text="${'SHA-256 · ' + asset.sha256()}"
+                                class="checksum"
+                            ></small>
+                        </div>
+                        <span class="asset-size" th:text="${asset.sizeLabel()}"></span>
+                        <a
+                            class="button button-outline button-small"
+                            th:href="${asset.downloadUrl()}"
+                            th:aria-label="#{download.file} + ' ' + ${asset.name()}"
+                            ><svg th:replace="~{fragments :: icon('download')}"></svg
+                            ><span th:text="#{nav.download}">İndir</span></a
+                        >
+                    </div>
+                </div>
+                <a href="/changelog" class="text-link archive-link"
+                    ><span th:text="#{download.archive}">Önceki sürümlere göz at</span
+                    ><svg th:replace="~{fragments :: icon('arrow')}"></svg
+                ></a>
+            </section>
+            <p th:unless="${latest}" class="empty-state" th:text="#{releases.empty}"></p>
+            <section class="faq-section">
+                <div>
+                    <div class="eyebrow section-index">FAQ</div>
+                    <h2 th:text="#{faq.title}">Aklında bir şey mi var?</h2>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary th:text="#{faq.free}"></summary>
+                        <p th:text="#{faq.free.answer}"></p>
+                    </details>
+                    <details>
+                        <summary th:text="#{faq.package}"></summary>
+                        <p th:text="#{faq.package.answer}"></p>
+                    </details>
+                    <details>
+                        <summary th:text="#{faq.system}"></summary>
+                        <p th:text="#{faq.system.answer}"></p>
+                    </details>
+                    <details>
+                        <summary th:text="#{faq.update}"></summary>
+                        <p th:text="#{faq.update.answer}"></p>
+                    </details>
+                </div>
+            </section>
+        </main>
+        <footer th:replace="~{fragments :: publicFooter}"></footer>
+        <div th:replace="~{fragments :: siteControls}"></div>
+    </body>
+</html>

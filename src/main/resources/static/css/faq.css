@@ -1,0 +1,141 @@
+/* One accessible accordion style for the homepage and full FAQ. */
+.faq-accordion {
+    min-width: 0;
+    border-top: 1px solid #ffffff20;
+}
+.faq-accordion details {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #ffffff20;
+    border-radius: 0;
+    background: transparent;
+    overflow: hidden;
+    scroll-margin-top: 96px;
+}
+.faq-accordion summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 19px 0;
+    min-height: 62px;
+    font-size: 15px;
+    font-weight: 550;
+    line-height: 1.6;
+    color: #e5eddf;
+    cursor: pointer;
+    list-style: none;
+}
+.faq-accordion summary::-webkit-details-marker {
+    display: none;
+}
+.faq-accordion summary:hover {
+    color: #cce4b0;
+}
+.faq-accordion summary:focus-visible {
+    outline-offset: -2px;
+}
+.faq-toggle {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    transition: transform 0.3s;
+}
+.faq-toggle:before,
+.faq-toggle:after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 1.5px;
+    left: 5px;
+    top: 10px;
+    background: #b6cba4;
+    transition:
+        transform 0.3s,
+        opacity 0.3s;
+}
+.faq-toggle:after {
+    transform: rotate(90deg);
+}
+.faq-accordion details[data-expanded="true"] .faq-toggle:after,
+.faq-accordion details[open]:not([data-expanded]) .faq-toggle:after {
+    transform: rotate(0);
+    opacity: 0;
+}
+.faq-answer p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #b5c4b5;
+    margin: 0;
+    padding: 0 36px 22px 0;
+}
+.faq-more {
+    margin-top: 18px;
+}
+.faq-page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.5fr);
+    gap: 64px;
+    align-items: start;
+}
+.faq-support {
+    position: sticky;
+    top: 104px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 28px;
+}
+.faq-support h2 {
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 0 0 16px;
+}
+.faq-support p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    max-width: 310px;
+}
+.faq-support .text-link {
+    margin-bottom: 14px;
+}
+.faq-support .launcher-icon {
+    width: 22px;
+    height: 22px;
+}
+@media (max-width: 800px) {
+    .faq-page-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .faq-support {
+        position: static;
+        padding: 0;
+    }
+    .faq-support p {
+        max-width: none;
+    }
+}
+@media (max-width: 600px) {
+    .faq-accordion summary {
+        font-size: 14px;
+        gap: 14px;
+        padding: 17px 0;
+    }
+    .faq-answer p {
+        padding: 0 0 20px;
+    }
+    .faq-support h2 {
+        font-size: 25px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .faq-toggle,
+    .faq-toggle:before,
+    .faq-toggle:after {
+        transition: none;
+    }
+}

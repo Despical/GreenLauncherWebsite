@@ -1,0 +1,67 @@
+name: greenlauncher-website
+
+services:
+  web:
+    build: .
+    image: greenlauncher-website:local
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 768m
+    cpus: 1.0
+    ports:
+      - "127.0.0.1:${HOST_PORT:-8087}:8087"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SITE_ADMIN_USERNAME: ${SITE_ADMIN_USERNAME:-admin}
+      SITE_ADMIN_PASSWORD_HASH: ${SITE_ADMIN_PASSWORD_HASH:?Set a BCrypt hash in .env}
+      SITE_PUBLIC_URL: ${SITE_PUBLIC_URL:-https://launcher.despical.dev}
+      DB_URL: jdbc:postgresql://postgres:5432/greenweb
+      DB_USERNAME: greenweb
+      DB_PASSWORD: ${DB_PASSWORD:?Set a database password in .env}
+    volumes:
+      - site-data:/app/data
+    networks: [backend, egress]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    mem_limit: 512m
+    environment:
+      POSTGRES_DB: greenweb
+      POSTGRES_USER: greenweb
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set a database password in .env}
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks: [backend]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U greenweb -d greenweb"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  backend:
+    internal: true
+  egress: {}
+
+volumes:
+  site-data:
+  database:

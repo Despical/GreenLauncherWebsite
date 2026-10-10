@@ -487,6 +487,7 @@ textarea:focus {
     align-items: center;
     flex-wrap: wrap;
     padding-block: 16px;
+    padding-right: 64px;
     border-top-color: #ffffff0e;
     font-size: 13px;
     line-height: 1.6;

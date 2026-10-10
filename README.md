@@ -38,7 +38,7 @@ cd GreenLauncherWebsite
 ./gradlew bootRun
 ```
 
-On Windows, use `gradlew.bat bootRun`, `start.bat` or `./start.ps1`.
+On Windows, use `./gradlew.bat bootRun` with JDK 25 configured through `JAVA_HOME`.
 
 - Website: `http://localhost:8087`
 - Administration: `http://localhost:8087/admin`

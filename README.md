@@ -70,26 +70,17 @@ Serve the application through an HTTPS reverse proxy; production administrator c
 `SITE_ADMIN_USERNAME`, `SITE_STORAGE`, `PORT`, `DB_URL`, `DB_USERNAME` and `DB_PASSWORD`.
 Spring does not load `.env` by itself; Compose supplies these environment variables.
 
-### Existing VPS proxy
+Keep deployment-specific network overrides outside Git. The public Compose file works
+independently; adapt your own reverse proxy and TLS configuration to your hosting environment.
+Back up both named volumes and avoid `docker compose down -v` when preserving installation data.
 
-`compose.vps.yml` attaches the application to the existing `plugins-hub-edge` Docker network:
+### Analytics
 
-```sh
-docker compose -f compose.yml -f compose.vps.yml up -d --build
-```
-
-`deploy/nginx/launcher.conf` serves `launcher.despical.dev` on the shared Nginx proxy.
-It uses the wildcard Cloudflare Origin certificate under `/etc/nginx/ssl/`, forwards the
-public HTTPS origin and port explicitly, and resolves the application through Docker DNS.
-Mount it as `/etc/nginx/conf.d/launcher.conf` in the proxy.
-
-The included `/etc/nginx/conf.d/launcher-cloudflare-realip.inc` must contain `set_real_ip_from`
-entries from Cloudflare's [IPv4](https://www.cloudflare.com/ips-v4/) and
-[IPv6](https://www.cloudflare.com/ips-v6/) lists. Trust `CF-Connecting-IP` only from those networks.
-Keep DNS proxied and use **Full (strict)** TLS. Test Nginx configuration before reloading.
-
-Back up both named volumes. For updates, pull `main` and run the same Compose command.
-Do not use `docker compose down -v` on an installation whose data must be retained.
+Optionally set `GOOGLE_ANALYTICS_ID` to a GA4 measurement ID (`G-...`). The integration is
+enabled only on public HTTPS pages at the configured site origin. It never runs in the
+administrator panel or local development. Google tags load after the visitor accepts
+analytics cookies; the footer's cookie settings allow the choice to be changed later.
+Advertising storage and personalization stay disabled, and page URLs omit query strings.
 
 ## Release management
 

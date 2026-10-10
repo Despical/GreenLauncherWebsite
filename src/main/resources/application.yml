@@ -38,6 +38,7 @@ management:
       show-details: never
 app:
   public-url: ${SITE_PUBLIC_URL:http://localhost:8087}
+  google-analytics-id: ${GOOGLE_ANALYTICS_ID:}
   storage: ${SITE_STORAGE:./data}
   admin-username: ${SITE_ADMIN_USERNAME:admin}
   admin-password-hash: ${SITE_ADMIN_PASSWORD_HASH:}

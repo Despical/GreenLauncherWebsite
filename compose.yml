@@ -21,6 +21,7 @@ services:
       SITE_ADMIN_USERNAME: ${SITE_ADMIN_USERNAME:-admin}
       SITE_ADMIN_PASSWORD_HASH: ${SITE_ADMIN_PASSWORD_HASH:?Set a BCrypt hash in .env}
       SITE_PUBLIC_URL: ${SITE_PUBLIC_URL:-https://launcher.despical.dev}
+      GOOGLE_ANALYTICS_ID: ${GOOGLE_ANALYTICS_ID:-}
       DB_URL: jdbc:postgresql://postgres:5432/greenweb
       DB_USERNAME: greenweb
       DB_PASSWORD: ${DB_PASSWORD:?Set a database password in .env}

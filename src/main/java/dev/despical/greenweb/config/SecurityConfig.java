@@ -53,6 +53,20 @@ import java.util.concurrent.ConcurrentHashMap;
 @Configuration
 public class SecurityConfig {
 
+    private static final String[] PUBLIC_READ_ROUTES = {
+        "/",
+        "/features",
+        "/faq",
+        "/changelog",
+        "/changelog/**",
+        "/download",
+        "/downloads/**",
+        "/updates/**",
+        "/actuator/health",
+        "/robots.txt",
+        "/sitemap.xml"
+    };
+
     @Bean
     UserDetailsService admin(
             @Value("${app.admin-username}") String username,
@@ -100,22 +114,9 @@ public class SecurityConfig {
                                         .permitAll()
                                         .requestMatchers("/admin/**")
                                         .hasRole("ADMIN")
-                                        .requestMatchers(
-                                                HttpMethod.GET,
-                                                "/",
-                                                "/features",
-                                                "/faq",
-                                                "/changelog",
-                                                "/changelog/**",
-                                                "/download",
-                                                "/downloads/**",
-                                                "/updates/**",
-                                                "/actuator/health",
-                                                "/robots.txt",
-                                                "/sitemap.xml")
+                                        .requestMatchers(HttpMethod.GET, PUBLIC_READ_ROUTES)
                                         .permitAll()
-                                        .requestMatchers(
-                                                HttpMethod.HEAD, "/downloads/**", "/updates/**")
+                                        .requestMatchers(HttpMethod.HEAD, PUBLIC_READ_ROUTES)
                                         .permitAll()
                                         .requestMatchers(HttpMethod.POST, "/language")
                                         .permitAll()
@@ -137,12 +138,18 @@ public class SecurityConfig {
                                 headers.contentSecurityPolicy(
                                         csp ->
                                                 csp.policyDirectives(
-                                                        "default-src 'self'; script-src 'self';"
-                                                            + " style-src 'self'; img-src 'self';"
-                                                            + " font-src 'self'; connect-src"
-                                                            + " 'self'; frame-ancestors 'none';"
-                                                            + " base-uri 'self'; form-action"
-                                                            + " 'self'; object-src 'none'")))
+                                                        "default-src 'self'; script-src 'self'"
+                                                            + " https://www.googletagmanager.com;"
+                                                            + " style-src 'self'; img-src 'self'"
+                                                            + " https://*.google-analytics.com"
+                                                            + " https://*.googletagmanager.com;"
+                                                            + " font-src 'self'; connect-src 'self'"
+                                                            + " https://*.google-analytics.com"
+                                                            + " https://*.analytics.google.com"
+                                                            + " https://*.googletagmanager.com;"
+                                                            + " frame-ancestors 'none'; base-uri"
+                                                            + " 'self'; form-action 'self';"
+                                                            + " object-src 'none'")))
                 .addFilterBefore(new LoginThrottle(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

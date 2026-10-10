@@ -18,6 +18,7 @@ Thumbs.db
 /scripts/
 **/AGENTS.md
 **/agents.md
+/deploy/nginx/cloudflare-realip.inc
 # Only optimized artwork is required by the application.
 /src/main/resources/static/images/world/*
 !/src/main/resources/static/images/world/hd-*.webp

@@ -98,6 +98,16 @@ class SiteIntegrationTest {
     }
 
     @Test
+    void turkishSelectionRendersTurkishTextOnAnEnglishServer() throws Exception {
+        mvc.perform(get("/").cookie(new Cookie(SiteLocaleResolver.COOKIE_NAME, "tr")))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("currentLanguageCode", "tr"))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("Bir dünya.")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("Özellikler")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("Windows için indir")));
+    }
+
+    @Test
     void publicMetadataUsesTheConfiguredOriginAndPrivatePagesAreNotIndexed() throws Exception {
         mvc.perform(head("/features")).andExpect(status().isOk());
         mvc.perform(head("/robots.txt")).andExpect(status().isOk());

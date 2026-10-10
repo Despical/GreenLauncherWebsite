@@ -136,6 +136,15 @@
                         ></a
                     >
                     <p th:text="#{footer.statement}">Minecraft’ı kendi tarzında oyna.</p>
+                    <button
+                        th:if="${analyticsEnabled}"
+                        class="analytics-settings"
+                        type="button"
+                        data-analytics-settings
+                        th:text="#{analytics.settings}"
+                    >
+                        Çerez ayarları
+                    </button>
                 </div>
                 <nav class="footer-links" aria-label="Footer navigation">
                     <div class="footer-link-group" th:aria-label="#{footer.explore}">
@@ -158,16 +167,10 @@
             </div>
             <div class="container footer-bottom">
                 <span>© <span th:text="${#dates.year(#dates.createNow())}">2026</span> Green Launcher.</span
-                ><span th:text="#{footer.disclaimer}">Mojang veya Microsoft ile bağlantılı değildir.</span>
-                <button
-                    th:if="${analyticsEnabled}"
-                    class="analytics-settings"
-                    type="button"
-                    data-analytics-settings
-                    th:text="#{analytics.settings}"
-                >
-                    Çerez ayarları
-                </button>
+                ><span th:text="#{footer.disclaimer}">
+                    Ticari markalar ilgili sahiplerine aittir. Mojang veya Microsoft ile bağlantımız yoktur ve onlar
+                    tarafından desteklenmiyoruz.
+                </span>
             </div>
             <section
                 th:if="${analyticsEnabled}"

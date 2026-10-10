@@ -93,16 +93,20 @@ document.querySelectorAll(".language-menu form").forEach((form) =>
 (() => {
     const button = document.querySelector(".back-to-top");
     if (!button) return;
+    const consentBanner = document.querySelector("[data-analytics-consent]");
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     let pending = false;
     const sync = () => {
-        const visible = scrollY > 280;
+        const visible = scrollY > 280 && (!consentBanner || consentBanner.hidden);
         button.classList.toggle("is-visible", visible);
         button.setAttribute("aria-hidden", String(!visible));
         button.tabIndex = visible ? 0 : -1;
         pending = false;
     };
     sync();
+    if (consentBanner) {
+        new MutationObserver(sync).observe(consentBanner, { attributes: true, attributeFilter: ["hidden"] });
+    }
     window.addEventListener(
         "scroll",
         () => {

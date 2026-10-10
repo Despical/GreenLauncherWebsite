@@ -94,9 +94,15 @@ document.querySelectorAll(".language-menu form").forEach((form) =>
     const button = document.querySelector(".back-to-top");
     if (!button) return;
     const consentBanner = document.querySelector("[data-analytics-consent]");
+    const footerBottom = document.querySelector(".public-footer .footer-bottom");
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     let pending = false;
     const sync = () => {
+        // Keep the control above the footer's copyright and trademark line.
+        const footerClearance = footerBottom
+            ? Math.max(0, innerHeight - footerBottom.getBoundingClientRect().top + 12)
+            : 0;
+        button.style.setProperty("--footer-clearance", `${footerClearance}px`);
         const visible = scrollY > 280 && (!consentBanner || consentBanner.hidden);
         button.classList.toggle("is-visible", visible);
         button.setAttribute("aria-hidden", String(!visible));
@@ -107,16 +113,14 @@ document.querySelectorAll(".language-menu form").forEach((form) =>
     if (consentBanner) {
         new MutationObserver(sync).observe(consentBanner, { attributes: true, attributeFilter: ["hidden"] });
     }
-    window.addEventListener(
-        "scroll",
-        () => {
-            if (!pending) {
-                pending = true;
-                requestAnimationFrame(sync);
-            }
-        },
-        { passive: true },
-    );
+    const scheduleSync = () => {
+        if (!pending) {
+            pending = true;
+            requestAnimationFrame(sync);
+        }
+    };
+    window.addEventListener("scroll", scheduleSync, { passive: true });
+    window.addEventListener("resize", scheduleSync);
     button.addEventListener("click", () => {
         document
             .querySelector(".public-header .brand,.admin-header .brand,.login-brand")

@@ -1,7 +1,8 @@
 /* Shared scroll controls and the Docs source-position image lightbox. */
 .back-to-top {
     position: fixed;
-    bottom: 28px;
+    --back-to-top-bottom: 28px;
+    bottom: max(var(--back-to-top-bottom), var(--footer-clearance, 0px));
     right: 28px;
     z-index: 30;
     width: 44px;
@@ -111,7 +112,7 @@
 }
 @media (max-width: 600px) {
     .back-to-top {
-        bottom: 20px;
+        --back-to-top-bottom: 20px;
         right: 20px;
         width: 42px;
         height: 42px;

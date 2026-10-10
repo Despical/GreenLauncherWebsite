@@ -404,6 +404,7 @@ textarea:focus {
     justify-content: space-between;
     gap: 28px;
     padding-block: 28px;
+    padding-bottom: 18px;
 }
 .public-footer .brand {
     gap: 9px;
@@ -487,7 +488,6 @@ textarea:focus {
     align-items: center;
     flex-wrap: wrap;
     padding-block: 16px;
-    padding-right: 64px;
     border-top-color: #ffffff0e;
     font-size: 13px;
     line-height: 1.6;
@@ -495,8 +495,9 @@ textarea:focus {
     gap: 8px 24px;
 }
 .public-footer .footer-bottom > span:nth-child(2) {
-    margin-left: 0;
+    margin-left: auto;
     max-width: none;
+    text-align: right;
 }
 .page-heading h1 {
     font-size: clamp(34px, 4.2vw, 52px);
@@ -763,6 +764,7 @@ textarea:focus {
         flex-direction: column;
         gap: 18px;
         padding-block: 24px;
+        padding-bottom: 18px;
     }
     .public-footer .footer-links {
         width: 100%;

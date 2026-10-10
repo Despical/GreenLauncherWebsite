@@ -53,6 +53,20 @@ import java.util.concurrent.ConcurrentHashMap;
 @Configuration
 public class SecurityConfig {
 
+    private static final String[] PUBLIC_READ_ROUTES = {
+        "/",
+        "/features",
+        "/faq",
+        "/changelog",
+        "/changelog/**",
+        "/download",
+        "/downloads/**",
+        "/updates/**",
+        "/actuator/health",
+        "/robots.txt",
+        "/sitemap.xml"
+    };
+
     @Bean
     UserDetailsService admin(
             @Value("${app.admin-username}") String username,
@@ -100,22 +114,9 @@ public class SecurityConfig {
                                         .permitAll()
                                         .requestMatchers("/admin/**")
                                         .hasRole("ADMIN")
-                                        .requestMatchers(
-                                                HttpMethod.GET,
-                                                "/",
-                                                "/features",
-                                                "/faq",
-                                                "/changelog",
-                                                "/changelog/**",
-                                                "/download",
-                                                "/downloads/**",
-                                                "/updates/**",
-                                                "/actuator/health",
-                                                "/robots.txt",
-                                                "/sitemap.xml")
+                                        .requestMatchers(HttpMethod.GET, PUBLIC_READ_ROUTES)
                                         .permitAll()
-                                        .requestMatchers(
-                                                HttpMethod.HEAD, "/downloads/**", "/updates/**")
+                                        .requestMatchers(HttpMethod.HEAD, PUBLIC_READ_ROUTES)
                                         .permitAll()
                                         .requestMatchers(HttpMethod.POST, "/language")
                                         .permitAll()

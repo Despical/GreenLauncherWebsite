@@ -99,6 +99,9 @@ class SiteIntegrationTest {
 
     @Test
     void publicMetadataUsesTheConfiguredOriginAndPrivatePagesAreNotIndexed() throws Exception {
+        mvc.perform(head("/features")).andExpect(status().isOk());
+        mvc.perform(head("/robots.txt")).andExpect(status().isOk());
+        mvc.perform(head("/admin")).andExpect(status().isFound());
         mvc.perform(get("/features").header("Host", "untrusted.example"))
                 .andExpect(status().isOk())
                 .andExpect(

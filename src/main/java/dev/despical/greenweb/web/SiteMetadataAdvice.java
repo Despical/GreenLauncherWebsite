@@ -36,8 +36,12 @@ import java.net.URI;
 public final class SiteMetadataAdvice {
 
     private final String publicUrl;
+    private final String publicHost;
+    private final String analyticsId;
 
-    public SiteMetadataAdvice(@Value("${app.public-url}") String publicUrl) {
+    public SiteMetadataAdvice(
+            @Value("${app.public-url}") String publicUrl,
+            @Value("${app.google-analytics-id:}") String analyticsId) {
         URI origin = URI.create(publicUrl);
         if (!("https".equals(origin.getScheme()) || "http".equals(origin.getScheme()))
                 || origin.getHost() == null
@@ -48,6 +52,11 @@ public final class SiteMetadataAdvice {
             throw new IllegalArgumentException("SITE_PUBLIC_URL must be an HTTP(S) origin.");
         }
         this.publicUrl = publicUrl.replaceFirst("/+$", "");
+        this.publicHost = origin.getHost();
+        this.analyticsId = analyticsId.strip();
+        if (!this.analyticsId.isEmpty() && !this.analyticsId.matches("G-[A-Z0-9]{4,20}")) {
+            throw new IllegalArgumentException("GOOGLE_ANALYTICS_ID must be a GA4 measurement ID.");
+        }
     }
 
     @ModelAttribute
@@ -55,6 +64,16 @@ public final class SiteMetadataAdvice {
         String path = request.getRequestURI();
         model.addAttribute("canonicalUrl", publicUrl + path);
         model.addAttribute("socialImageUrl", publicUrl + "/images/social-cover.png");
-        model.addAttribute("privatePage", path.startsWith("/admin") || path.equals("/error"));
+        boolean privatePage = path.startsWith("/admin") || path.equals("/error");
+        model.addAttribute("privatePage", privatePage);
+        model.addAttribute("analyticsMeasurementId", analyticsId);
+        model.addAttribute(
+                "analyticsEnabled",
+                !privatePage
+                        && !analyticsId.isEmpty()
+                        && request.isSecure()
+                        && request.getServerName().equalsIgnoreCase(publicHost)
+                        && !publicHost.equalsIgnoreCase("localhost")
+                        && !publicHost.equals("127.0.0.1"));
     }
 }

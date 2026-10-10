@@ -138,12 +138,18 @@ public class SecurityConfig {
                                 headers.contentSecurityPolicy(
                                         csp ->
                                                 csp.policyDirectives(
-                                                        "default-src 'self'; script-src 'self';"
-                                                            + " style-src 'self'; img-src 'self';"
-                                                            + " font-src 'self'; connect-src"
-                                                            + " 'self'; frame-ancestors 'none';"
-                                                            + " base-uri 'self'; form-action"
-                                                            + " 'self'; object-src 'none'")))
+                                                        "default-src 'self'; script-src 'self'"
+                                                            + " https://www.googletagmanager.com;"
+                                                            + " style-src 'self'; img-src 'self'"
+                                                            + " https://*.google-analytics.com"
+                                                            + " https://*.googletagmanager.com;"
+                                                            + " font-src 'self'; connect-src 'self'"
+                                                            + " https://*.google-analytics.com"
+                                                            + " https://*.analytics.google.com"
+                                                            + " https://*.googletagmanager.com;"
+                                                            + " frame-ancestors 'none'; base-uri"
+                                                            + " 'self'; form-action 'self';"
+                                                            + " object-src 'none'")))
                 .addFilterBefore(new LoginThrottle(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

@@ -166,11 +166,13 @@
                 </nav>
             </div>
             <div class="container footer-bottom">
-                <span>© <span th:text="${#dates.year(#dates.createNow())}">2026</span> Green Launcher.</span
-                ><span th:text="#{footer.disclaimer}">
-                    Ticari markalar ilgili sahiplerine aittir. Mojang veya Microsoft ile bağlantımız yoktur ve onlar
-                    tarafından desteklenmiyoruz.
-                </span>
+                <p>
+                    © <span th:text="${#dates.year(#dates.createNow())}">2026</span> Green Launcher.
+                    <span th:text="#{footer.disclaimer}">
+                        Tüm ticari markalar ilgili sahiplerine aittir. Aksi belirtilmedikçe bu site hiçbir oyun veya
+                        platformla bağlantılı değildir ve onlar tarafından desteklenmemektedir.
+                    </span>
+                </p>
             </div>
             <section
                 th:if="${analyticsEnabled}"

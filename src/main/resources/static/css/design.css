@@ -483,21 +483,16 @@ textarea:focus {
     height: 16px;
 }
 .public-footer .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    display: block;
     padding-block: 16px;
     border-top-color: #ffffff0e;
     font-size: 13px;
     line-height: 1.6;
     color: #a5b0a7;
-    gap: 8px 24px;
+    text-align: center;
 }
-.public-footer .footer-bottom > span:nth-child(2) {
-    margin-left: auto;
-    max-width: none;
-    text-align: right;
+.public-footer .footer-bottom > p {
+    margin: 0;
 }
 .page-heading h1 {
     font-size: clamp(34px, 4.2vw, 52px);
@@ -776,10 +771,6 @@ textarea:focus {
     .public-footer .footer-bottom {
         padding-block: 14px;
         font-size: 13px;
-        gap: 7px;
-    }
-    .public-footer .footer-bottom > span {
-        width: 100%;
     }
     .public-footer .brand {
         font-size: 15px;

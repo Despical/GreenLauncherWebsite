@@ -1,19 +1,33 @@
-![Green Launcher](.github/cover.png)
+<p align="center">
+  <img src="src/main/resources/static/images/logo.png" width="128" height="128" alt="Green Launcher Website icon">
+</p>
 
-# Green Launcher Website
+<h1 align="center">Green Launcher Website</h1>
 
-[![CI](https://github.com/Despical/GreenLauncherWebsite/actions/workflows/build.yml/badge.svg)](https://github.com/Despical/GreenLauncherWebsite/actions/workflows/build.yml)
-[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
-[![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://adoptium.net/)
+<p align="center">The official Green Launcher website: features, downloads, release notes and an administrator-only publishing panel.</p>
 
-The official website for [Green Launcher](https://github.com/Despical/GreenLauncher):
-features, downloads, release notes and an administrator-only publishing panel.
+<p align="center">
+  <a href="https://github.com/Despical/GreenLauncherWebsite/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/Despical/GreenLauncherWebsite/build.yml?branch=main&amp;label=Build%20and%20checks" alt="Build and checks"></a>
+  <img src="https://img.shields.io/badge/Java-25-007396.svg" alt="Java 25">
+  <img src="https://img.shields.io/badge/Gradle-9.8.0-079ec0" alt="Gradle 9.8.0">
+  <img src="https://img.shields.io/badge/Spring%20Boot-4.1.1-6DB33F" alt="Spring Boot 4.1.1">
+  <img src="https://img.shields.io/badge/Languages-6-75e8dc" alt="6 Languages">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="GPLv3 License"></a>
+</p>
 
-**[Visit the website](https://launcher.despical.dev)** ·
-[Features](https://launcher.despical.dev/features) ·
-[Changelog](https://launcher.despical.dev/changelog) ·
-[FAQ](https://launcher.despical.dev/faq) ·
-[Discord](https://discord.gg/uXVU8jmtpU)
+<p align="center">
+  <a href="https://launcher.despical.dev">Website</a> ·
+  <a href="https://launcher.despical.dev/download">Download</a> ·
+  <a href="https://launcher.despical.dev/features">Features</a> ·
+  <a href="https://launcher.despical.dev/changelog">Release Notes</a> ·
+  <a href="https://launcher.despical.dev/faq">FAQ</a> ·
+  <a href="https://github.com/Despical/GreenLauncher">Launcher</a> ·
+  <a href="https://discord.gg/uXVU8jmtpU">Discord</a>
+</p>
+
+---
+
+![Green Launcher website preview](.github/cover.png)
 
 ## Features
 

@@ -140,7 +140,7 @@ public class SecurityConfig {
                                                 csp.policyDirectives(
                                                         "default-src 'self'; script-src 'self'"
                                                             + " https://www.googletagmanager.com;"
-                                                            + " style-src 'self'; img-src 'self'"
+                                                            + " style-src 'self'; img-src 'self' data:"
                                                             + " https://*.google-analytics.com"
                                                             + " https://*.googletagmanager.com;"
                                                             + " font-src 'self'; connect-src 'self'"

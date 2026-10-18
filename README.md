@@ -7,7 +7,7 @@
 <p align="center">The official Green Launcher website: features, downloads, release notes and an administrator-only publishing panel.</p>
 
 <p align="center">
-  <a href="https://github.com/Despical/GreenLauncherWebsite/actions/workflows/build.yml"><img src="https://github.com/Despical/GreenLauncherWebsite/actions/workflows/build.yml/badge.svg?branch=main" alt="Build and checks"></a>
+  <a href="https://github.com/Despical/GreenLauncherWebsite/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/Despical/GreenLauncherWebsite/build.yml?branch=main&amp;label=Build%20and%20checks" alt="Build and checks"></a>
   <img src="https://img.shields.io/badge/Java-25-007396.svg" alt="Java 25">
   <img src="https://img.shields.io/badge/Gradle-9.8.0-079ec0" alt="Gradle 9.8.0">
   <img src="https://img.shields.io/badge/Spring%20Boot-4.1.1-6DB33F" alt="Spring Boot 4.1.1">
@@ -26,6 +26,8 @@
 </p>
 
 ---
+
+![Green Launcher website preview](.github/cover.png)
 
 ## Features
 

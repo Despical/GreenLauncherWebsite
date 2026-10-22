@@ -101,11 +101,16 @@ Advertising storage and personalization stay disabled, and page URLs omit query 
 An empty installation imports the bundled snapshot of public Green Launcher releases.
 Imported downloads redirect to the corresponding official GitHub asset. The administrator's
 GitHub sync action adds new stable releases without overwriting existing notes or drafts.
+Production also checks GitHub automatically shortly after startup and every five minutes.
+Drafts and prereleases are skipped; failed imports are rolled back and retried at the next
+check. Set `GITHUB_RELEASE_SYNC_ENABLED=false` to disable automatic checks, or
+`GITHUB_RELEASE_SYNC_INTERVAL` to change the interval (for example, `10m`).
 
 To publish files through this website:
 
 1. Create a draft with a unique version such as `0.20.0`.
-2. Add a title, summary and notes. Notes support plain text, headings and lists; HTML stays inert.
+2. Add a title, summary and notes. Notes support Markdown headings, bold, italics, links,
+   lists, quotes and code blocks. Embedded HTML and unsafe link URLs stay inert.
 3. Upload `GreenLauncher-Setup-0.20.0.exe`, its `.exe.blockmap`, and `GreenLauncher-0.20.0.exe`.
 4. Optionally upload `GreenLauncher-0.20.0.exe.blocks.json` for portable differential updates.
 5. Publish. The application generates `latest.yml`, `portable-update.json` and `SHA256SUMS.txt`.

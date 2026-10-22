@@ -1,38 +1,3 @@
-// Release notes are rendered as inert DOM nodes; remote/admin text never becomes HTML.
-document.querySelectorAll("[data-notes]").forEach((article) => {
-    const source = article.dataset.notes;
-    const fragment = document.createDocumentFragment();
-    let list;
-    for (const line of source.split(/\r?\n/)) {
-        const text = line.trim();
-        if (!text) {
-            list = null;
-            continue;
-        }
-        const heading = /^(#{1,6})\s+(.+)$/.exec(text);
-        const item = /^[-*+]\s+(.+)$/.exec(text);
-        if (heading) {
-            list = null;
-            const node = document.createElement(`h${Math.min(4, Math.max(2, heading[1].length))}`);
-            node.textContent = heading[2];
-            fragment.append(node);
-        } else if (item) {
-            if (!list) {
-                list = document.createElement("ul");
-                fragment.append(list);
-            }
-            const node = document.createElement("li");
-            node.textContent = item[1];
-            list.append(node);
-        } else {
-            list = null;
-            const node = document.createElement("p");
-            node.textContent = text;
-            fragment.append(node);
-        }
-    }
-    article.replaceChildren(fragment);
-});
 const search = document.querySelector("#release-search");
 search?.addEventListener("input", () => {
     const query = search.value.toLocaleLowerCase().trim();

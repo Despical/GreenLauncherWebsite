@@ -194,7 +194,7 @@
                                         ><span class="badge" th:if="${state.first}" th:text="#{release.latest}"></span>
                                     </div>
                                     <h3 th:text="${release.title()}"></h3>
-                                    <p th:text="${release.summary()}"></p>
+                                    <p th:text="${@releaseMarkdown.plain(release.summary())}"></p>
                                     <div class="release-card-bottom">
                                         <span class="release-card-date" th:text="${release.dateLabel()}"></span
                                         ><span class="text-link"

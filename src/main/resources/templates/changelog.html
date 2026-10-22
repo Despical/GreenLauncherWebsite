@@ -45,7 +45,7 @@
                             </h2>
                             <span class="badge" th:if="${state.first}" th:text="#{release.latest}"></span>
                         </div>
-                        <p th:text="${release.summary()}"></p>
+                        <p th:text="${@releaseMarkdown.plain(release.summary())}"></p>
                         <div class="timeline-actions">
                             <a class="text-link" th:href="@{/changelog/{v}(v=${release.version()})}"
                                 ><span th:text="#{release.read}"></span

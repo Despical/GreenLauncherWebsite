@@ -7,3 +7,6 @@ server:
 app:
   public-url: ${SITE_PUBLIC_URL:https://launcher.despical.dev}
   local-admin: false
+  github-sync:
+    enabled: ${GITHUB_RELEASE_SYNC_ENABLED:true}
+    interval: ${GITHUB_RELEASE_SYNC_INTERVAL:5m}

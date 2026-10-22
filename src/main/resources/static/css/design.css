@@ -551,6 +551,48 @@ textarea:focus {
 .release-notes h3 {
     font-size: 22px;
 }
+.release-notes {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.release-notes h1 {
+    font-size: 27px;
+    margin: 35px 0 19px;
+}
+.release-notes strong {
+    color: var(--text);
+    font-weight: 700;
+}
+.release-notes ol {
+    padding-left: 24px;
+    margin-bottom: 31px;
+}
+.release-notes blockquote {
+    margin: 24px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--line);
+}
+.release-notes code {
+    font-family: ui-monospace, monospace;
+    font-size: 0.9em;
+    padding: 2px 5px;
+    background: var(--panel);
+    border-radius: 4px;
+}
+.release-notes pre {
+    padding: 16px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    overflow-x: auto;
+}
+.release-notes pre code {
+    padding: 0;
+    background: transparent;
+}
+.release-notes img {
+    max-width: 100%;
+    height: auto;
+}
 .release-download-box p,
 .back-link {
     font-size: 13px;

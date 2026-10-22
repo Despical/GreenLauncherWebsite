@@ -301,7 +301,7 @@ class SiteIntegrationTest {
                         "0.0.901",
                         "Fixture",
                         "Isolated fixture",
-                        "## Test\n- Safe <script>alert(1)</script>");
+                        "## Test\n- **Create profile** and *play* with `versions`.\n- Safe <script>alert(1)</script>");
         assertThatThrownBy(() -> releases.publish(id)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> releases.save(null, "0.0.901", "Duplicate", "Fixture", "Fixture"))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -380,6 +380,8 @@ class SiteIntegrationTest {
                 .andExpect(header().string("Content-Range", "bytes 0-9/2048"));
         mvc.perform(get("/changelog/0.0.901"))
                 .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("<strong>Create profile</strong>")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("<em>play</em>")))
                 .andExpect(
                         content().string(org.hamcrest.Matchers.containsString("&lt;script&gt;")));
         assertThatThrownBy(() -> storage.delete(portable.id()))

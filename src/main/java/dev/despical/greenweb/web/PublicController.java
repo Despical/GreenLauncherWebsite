@@ -18,6 +18,7 @@
 
 package dev.despical.greenweb.web;
 
+import dev.despical.greenweb.release.ReleaseMarkdown;
 import dev.despical.greenweb.release.ReleaseService;
 
 import org.springframework.stereotype.Controller;
@@ -59,8 +60,11 @@ public class PublicController {
 
     private final ReleaseService releases;
 
-    public PublicController(ReleaseService releases) {
+    private final ReleaseMarkdown markdown;
+
+    public PublicController(ReleaseService releases, ReleaseMarkdown markdown) {
         this.releases = releases;
+        this.markdown = markdown;
     }
 
     @ModelAttribute
@@ -105,7 +109,9 @@ public class PublicController {
     @GetMapping("/changelog/{version}")
     String detail(@PathVariable String version, Model model) {
         model.addAttribute("activePage", "changelog");
-        model.addAttribute("release", releases.publicVersion(version));
+        var release = releases.publicVersion(version);
+        model.addAttribute("release", release);
+        model.addAttribute("releaseNotesHtml", markdown.html(release.notes()));
         return "release";
     }
 }

@@ -23,7 +23,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
@@ -48,10 +49,13 @@ public class GitHubImportService {
 
     private final ReleaseRepository repository;
 
+    private final TransactionTemplate transaction;
+
     private final JsonMapper mapper = JsonMapper.builder().build();
 
-    public GitHubImportService(ReleaseRepository repository) {
+    public GitHubImportService(ReleaseRepository repository, PlatformTransactionManager transactions) {
         this.repository = repository;
+        this.transaction = new TransactionTemplate(transactions);
     }
 
     @Bean
@@ -90,8 +94,11 @@ public class GitHubImportService {
         }
     }
 
-    @Transactional
-    public int importJson(JsonNode releases) {
+    public synchronized int importJson(JsonNode releases) {
+        return transaction.execute(status -> importReleases(releases));
+    }
+
+    private int importReleases(JsonNode releases) {
         int count = 0;
         for (JsonNode item : releases) {
             if (item.path("draft").asBoolean() || item.path("prerelease").asBoolean()) {

@@ -12,12 +12,10 @@
                     <h1 th:text="${release.title()}"></h1>
                     <time th:text="${release.dateLabel()}"></time>
                 </div>
-                <p th:text="${release.summary()}"></p>
+                <p th:text="${@releaseMarkdown.plain(release.summary())}"></p>
             </div>
             <div class="release-detail-layout">
-                <article class="release-notes" th:attr="data-notes=${release.notes()}">
-                    <pre th:text="${release.notes()}"></pre>
-                </article>
+                <article class="release-notes" th:utext="${releaseNotesHtml}"></article>
                 <aside class="release-download-box">
                     <div class="package-heading"><h2 th:text="${'Green Launcher ' + release.version()}"></h2></div>
                     <p th:text="#{release.download.copy}"></p>

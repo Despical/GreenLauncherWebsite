@@ -12,7 +12,6 @@
                     <h1 th:text="${release.title()}"></h1>
                     <time th:text="${release.dateLabel()}"></time>
                 </div>
-                <p th:text="${@releaseMarkdown.plain(release.summary())}"></p>
             </div>
             <div class="release-detail-layout">
                 <article class="release-notes" th:utext="${releaseNotesHtml}"></article>

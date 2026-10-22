@@ -789,7 +789,7 @@
     color: #c3cebf;
 }
 .public-page .release-files h3 {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
     font-weight: 600;
     letter-spacing: 0;
@@ -811,7 +811,7 @@
     flex: 0 0 16px;
 }
 .public-page .release-files a {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.6;
     margin-top: 14px;
     color: #a8b5a1;

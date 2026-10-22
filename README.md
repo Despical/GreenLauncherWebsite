@@ -101,10 +101,9 @@ Advertising storage and personalization stay disabled, and page URLs omit query 
 An empty installation imports the bundled snapshot of public Green Launcher releases.
 Imported downloads redirect to the corresponding official GitHub asset. The administrator's
 GitHub sync action adds new stable releases without overwriting existing notes or drafts.
-Production also checks GitHub automatically shortly after startup and every five minutes.
-Drafts and prereleases are skipped; failed imports are rolled back and retried at the next
-check. Set `GITHUB_RELEASE_SYNC_ENABLED=false` to disable automatic checks, or
-`GITHUB_RELEASE_SYNC_INTERVAL` to change the interval (for example, `10m`).
+GitHub is checked only when the administrator clicks the sync action; there are no
+automatic background checks. Drafts and prereleases are skipped, and failed imports
+are rolled back.
 
 To publish files through this website:
 

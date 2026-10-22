@@ -22,8 +22,6 @@ services:
       SITE_ADMIN_PASSWORD_HASH: ${SITE_ADMIN_PASSWORD_HASH:?Set a BCrypt hash in .env}
       SITE_PUBLIC_URL: ${SITE_PUBLIC_URL:-https://launcher.despical.dev}
       GOOGLE_ANALYTICS_ID: ${GOOGLE_ANALYTICS_ID:-}
-      GITHUB_RELEASE_SYNC_ENABLED: ${GITHUB_RELEASE_SYNC_ENABLED:-true}
-      GITHUB_RELEASE_SYNC_INTERVAL: ${GITHUB_RELEASE_SYNC_INTERVAL:-5m}
       DB_URL: jdbc:postgresql://postgres:5432/greenweb
       DB_USERNAME: greenweb
       DB_PASSWORD: ${DB_PASSWORD:?Set a database password in .env}

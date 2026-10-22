@@ -23,7 +23,6 @@ import dev.despical.greenweb.release.ReleaseRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import tools.jackson.databind.json.JsonMapper;
 
 import static org.assertj.core.api.Assertions.*;
@@ -32,13 +31,10 @@ import static org.assertj.core.api.Assertions.*;
         "spring.datasource.url=jdbc:h2:mem:github-import;MODE=PostgreSQL;DB_CLOSE_DELAY=-1",
         "app.seed-releases=false", "app.local-admin=false",
         "app.admin-password-hash=$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
-        "app.github-sync.enabled=true", "app.github-sync.initial-delay=1h",
-        "app.github-sync.interval=1h"
 })
 class GitHubImportIntegrationTest {
     @Autowired GitHubImportService github;
     @Autowired ReleaseRepository repository;
-    @Autowired ScheduledAnnotationBeanPostProcessor scheduler;
     private final JsonMapper mapper = JsonMapper.builder().build();
 
     private String release(String version, String assets) {
@@ -54,11 +50,6 @@ class GitHubImportIntegrationTest {
                 {"name":"GreenLauncher-%s.exe","size":2048,
                  "browser_download_url":"https://github.com/Despical/GreenLauncher/releases/download/v%s/GreenLauncher-%s.exe"}
                 """.formatted(version, version, version);
-    }
-
-    @Test
-    void schedulerIsRegistered() {
-        assertThat(scheduler.getScheduledTasks()).hasSize(1);
     }
 
     @Test

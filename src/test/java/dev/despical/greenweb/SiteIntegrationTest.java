@@ -73,6 +73,26 @@ class SiteIntegrationTest {
     @Autowired AssetStorage storage;
 
     @Test
+    void contentSecurityPolicyUsesFreshNonceAndAllowsCloudflareInsights() throws Exception {
+        String first =
+                mvc.perform(get("/")).andExpect(status().isOk()).andReturn().getResponse()
+                        .getHeader("Content-Security-Policy");
+        String second =
+                mvc.perform(get("/features")).andReturn().getResponse()
+                        .getHeader("Content-Security-Policy");
+        assertThat(first)
+                .matches("default-src 'self'; script-src 'self' 'nonce-[A-Za-z0-9+/]{24}' .*")
+                .contains("https://static.cloudflareinsights.com")
+                .contains("connect-src 'self'")
+                .contains("https://cloudflareinsights.com")
+                .contains("frame-ancestors 'none'")
+                .doesNotContain("unsafe-inline");
+        assertThat(second).startsWith("default-src 'self'; script-src 'self' 'nonce-");
+        assertThat(second.split("'nonce-")[1].substring(0, 24))
+                .isNotEqualTo(first.split("'nonce-")[1].substring(0, 24));
+    }
+
+    @Test
     void publicPagesRenderInEveryLanguage() throws Exception {
         for (String language : new String[] {"tr", "en", "de", "fr", "ru", "pl"}) {
             for (String path :

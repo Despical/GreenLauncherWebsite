@@ -133,25 +133,43 @@ public class SecurityConfig {
                         logout ->
                                 logout.logoutUrl("/admin/logout")
                                         .logoutSuccessUrl("/admin/login?logout"))
-                .headers(
-                        headers ->
-                                headers.contentSecurityPolicy(
-                                        csp ->
-                                                csp.policyDirectives(
-                                                        "default-src 'self'; script-src 'self'"
-                                                            + " https://www.googletagmanager.com;"
-                                                            + " style-src 'self'; img-src 'self' data:"
-                                                            + " https://*.google-analytics.com"
-                                                            + " https://*.googletagmanager.com;"
-                                                            + " font-src 'self'; connect-src 'self'"
-                                                            + " https://*.google-analytics.com"
-                                                            + " https://*.analytics.google.com"
-                                                            + " https://*.googletagmanager.com;"
-                                                            + " frame-ancestors 'none'; base-uri"
-                                                            + " 'self'; form-action 'self';"
-                                                            + " object-src 'none'")))
+                .addFilterBefore(new ContentSecurityPolicy(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new LoginThrottle(), UsernamePasswordAuthenticationFilter.class)
                 .build();
+    }
+
+    /**
+     * Sends the Content Security Policy with a fresh nonce per response. Cloudflare copies the
+     * nonce onto the scripts it injects into pages (bot detection and Web Analytics), so those
+     * run without allowing arbitrary inline scripts.
+     */
+    static class ContentSecurityPolicy extends OncePerRequestFilter {
+
+        private static final SecureRandom RANDOM = new SecureRandom();
+
+        static String policy(String nonce) {
+            return "default-src 'self'; script-src 'self' 'nonce-"
+                    + nonce
+                    + "' https://www.googletagmanager.com https://static.cloudflareinsights.com;"
+                    + " style-src 'self'; img-src 'self' data: https://*.google-analytics.com"
+                    + " https://*.googletagmanager.com; font-src 'self'; connect-src 'self'"
+                    + " https://*.google-analytics.com https://*.analytics.google.com"
+                    + " https://*.googletagmanager.com https://cloudflareinsights.com;"
+                    + " frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+                    + " object-src 'none'";
+        }
+
+        @Override
+        protected void doFilterInternal(
+                HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+                throws ServletException, IOException {
+            byte[] bytes = new byte[18];
+            RANDOM.nextBytes(bytes);
+            response.setHeader(
+                    "Content-Security-Policy",
+                    policy(Base64.getEncoder().encodeToString(bytes)));
+            chain.doFilter(request, response);
+        }
     }
 
     static class LoginThrottle extends OncePerRequestFilter {
